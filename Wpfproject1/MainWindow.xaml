@@ -1,0 +1,30 @@
+﻿<Window x:Class="Wpfproject1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfproject1"
+        mc:Ignorable="d"
+		x:Name="Main"
+        Title="WpfProject1_SinaFayazi" 
+		Height="500" 
+		Width="1000" 
+		MinHeight="280"
+		MinWidth="950"
+		Style="{StaticResource WindowStyle1}" >
+	<Grid 
+		x:Name="main" 
+		Background="{StaticResource mywindowbrush}" >
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<local:Library 
+			Grid.Column="0"/>
+		<local:Shelf 
+			Grid.Column="1"/>
+		<local:Book 
+			Grid.Column="2"/>
+	</Grid>
+</Window>
