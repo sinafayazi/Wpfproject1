@@ -41,29 +41,31 @@
                             Foreground="{StaticResource 
 							Button.Static.Background}"
                             Text="{TemplateBinding Title}" />
-						<Button x:Name="close"
+						
+						<ToggleButton x:Name="close"
                             Grid.Column="4"
                             Width="20"
 							Height="20"
                             Margin="5"
                             Content="X"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
-							Style="{StaticResource ButtonStyle2}"/>
-						<Button x:Name="maximize"
+							/>
+						<ToggleButton x:Name="maximize"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
                             Margin="5"
                             Content="#"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
-							Style="{StaticResource ButtonStyle2}"/>
-						<Button x:Name="minimize"
+							/>
+						<ToggleButton x:Name="minimize"
+							
                             Grid.Column="2"
                             Width="20"
 							Height="20"
                             Margin="5"
                             Content="_"
-							Style="{StaticResource ButtonStyle2}"
+							
                             WindowChrome.IsHitTestVisibleInChrome="True" />
 						<Border
                             Grid.Row="1" Grid.ColumnSpan="10"
@@ -74,19 +76,21 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
+						
 						<Trigger SourceName="minimize"
-								 Property="HasContent"  
+								 Property="IsChecked"  
 								 Value="true">
-							<Setter  Property="WindowState"
-									 Value="Normal"/>
-						</Trigger>
-						<Trigger SourceName="minimize"
-								 Property="IsPressed"  
-								 Value="True">
 							<Setter  Property="WindowState"
 									 Value="Minimized"/>
 						</Trigger>
 						
+						<Trigger Property="WindowState"
+									 Value="Minimized">
+							<Setter TargetName="minimize"
+									Property="IsChecked"
+									 Value="false" />
+						</Trigger>
+					
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
