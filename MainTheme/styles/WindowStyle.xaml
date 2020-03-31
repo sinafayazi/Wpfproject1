@@ -42,7 +42,7 @@
                             Foreground="{StaticResource 
 							Button.Static.Background}"
                             Text="{TemplateBinding Title}" />
-						
+
 						<ToggleButton x:Name="close"
                             Grid.Column="4"
                             Width="20"
@@ -86,12 +86,15 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
+						<Trigger Property="WindowState" 
+								 Value="Minimized">
+							<Setter TargetName="minimize" 
+									Property="IsChecked" 
+									Value="false"/>
+						</Trigger>
 						<Trigger SourceName="minimize"
 									Property="IsChecked" 
 									Value="true" >
-
-
-
 							<Setter  Property="WindowState"
 									 Value="Minimized"/>
 							<Setter TargetName="maximize"
@@ -194,7 +197,7 @@
 									 Value="false" />
 						</Trigger>-->
 					</ControlTemplate.Triggers>
-					
+
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

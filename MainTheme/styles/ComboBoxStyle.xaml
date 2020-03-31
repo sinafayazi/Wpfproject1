@@ -274,7 +274,7 @@
 				   Grid.ColumnSpan="2" 
 				   IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, 
 				RelativeSource={RelativeSource TemplatedParent}}" 
-				   Margin="1" PopupAnimation="Slide"
+				   Margin="1" 
 				   Placement="Bottom" Opacity=".5">
 				<Themes:SystemDropShadowChrome 
 					x:Name="shadow"
@@ -288,8 +288,9 @@
 							BorderThickness="1" 
 							Background="{StaticResource 
 							ComboBox.Static.Background}"
-							CornerRadius="12">
-						<ScrollViewer x:Name="DropDownScrollViewer">
+							CornerRadius="12" 
+							 >
+						<ScrollViewer x:Name="DropDownScrollViewer" VerticalScrollBarVisibility="Hidden" >
 							<Grid x:Name="grid"
 								  RenderOptions.ClearTypeHint="Enabled">
 								<Canvas x:Name="canvas" 
@@ -300,11 +301,11 @@
 									<Rectangle
 										x:Name="opaqueRect" 
 										RadiusX="12"
-										RadiusY="12" 
+										RadiusY="12"
 										Fill="{StaticResource 
 										ComboBox.Static.Background}"
 										Height="{Binding ActualHeight, 
-										ElementName=dropDownBorder}"
+										ElementName=dropDownBorder}" 
 										Width="{Binding ActualWidth, 
 										ElementName=dropDownBorder}" />
 								</Canvas>
@@ -345,6 +346,37 @@
 								VerticalContentAlignment}"/>
 		</Grid>
 		<ControlTemplate.Triggers>
+			<Trigger Property="IsOpen" SourceName="PART_Popup" Value="true">
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimation 
+											Storyboard.TargetName="dropDownBorder"
+											Storyboard.TargetProperty=
+											"Height"
+											From="0"
+											To="70" 
+											Duration="0:0:0:.5"/>
+
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimation 
+											Storyboard.TargetName="dropDownBorder"
+											Storyboard.TargetProperty=
+											"Height"
+											
+											To="0" 
+											Duration="0:0:0:.1"/>
+
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.ExitActions>
+
+			</Trigger>
 			<Trigger Property="HasDropShadow"
 					 SourceName="PART_Popup" 
 					 Value="true">
