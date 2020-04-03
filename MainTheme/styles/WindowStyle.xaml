@@ -97,44 +97,8 @@
 									Value="true" >
 							<Setter  Property="WindowState"
 									 Value="Minimized"/>
-							<Setter TargetName="maximize"
-									Property="Visibility"
-									 Value="Visible" />
-							<Setter TargetName="restore"
-									Property="IsChecked"
-									 Value="false" />
-							<Setter TargetName="restore"
-									Property="Visibility"
-									 Value="Collapsed" />
-							<Setter TargetName="maximize"
-									Property="IsChecked"
-									 Value="false" />
 						</Trigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition 
-									SourceName="minimize"
-									Property="IsChecked" 
-									Value="true"/>
-								<Condition SourceName="maximize"
-								 Property="IsChecked"  
-								 Value="false"/>
-							</MultiTrigger.Conditions>
-							<Setter  Property="WindowState"
-									 Value="Minimized"/>
-							<Setter TargetName="maximize"
-									Property="Visibility"
-									 Value="Visible" />
-							<Setter TargetName="restore"
-									Property="IsChecked"
-									 Value="false" />
-							<Setter TargetName="restore"
-									Property="Visibility"
-									 Value="Collapsed" />
-							<Setter TargetName="maximize"
-									Property="IsChecked"
-									 Value="false" />
-						</MultiTrigger>
+					
 						<Trigger SourceName="maximize"
 								 Property="IsChecked"  
 								 Value="true">
@@ -165,37 +129,7 @@
 									Property="IsChecked"
 									 Value="false" />
 						</Trigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition 
-									SourceName="minimize"
-									Property="IsChecked" 
-									Value="true"/>
-								<Condition Property="WindowState"
-											   Value="Normal"/>
-							</MultiTrigger.Conditions>
-							<Setter TargetName="maximize"
-									Property="Visibility"
-									 Value="Visible" />
-							<Setter TargetName="restore"
-									Property="IsChecked"
-									 Value="false" />
-							<Setter TargetName="restore"
-									Property="Visibility"
-									 Value="Collapsed" />
-							<Setter TargetName="maximize"
-									Property="IsChecked"
-									 Value="false" />
-							<Setter TargetName="minimize"
-									Property="IsChecked"
-									 Value="false" />
-						</MultiTrigger>
-						<!--<Trigger Property="WindowState"
-							 Value="Normal">
-							<Setter TargetName="minimize"
-									Property="IsChecked"
-									 Value="false" />
-						</Trigger>-->
+					
 					</ControlTemplate.Triggers>
 
 				</ControlTemplate>
