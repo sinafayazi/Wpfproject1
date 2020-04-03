@@ -101,6 +101,7 @@
 				<ComboBoxItem 
 					Content="Arabic"/>
 			</ComboBox>
+
 			<TextBox 
 				TextWrapping="NoWrap"
 				Grid.Row="6" 

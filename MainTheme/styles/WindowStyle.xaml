@@ -37,43 +37,46 @@
 						</Grid.RowDefinitions>
 						<TextBlock 
 							VerticalAlignment="Center"
-                            Margin="5,0,0,0"
+                            Margin="5,10,5,5"
                             FontSize="14"
                             Foreground="{StaticResource 
 							Button.Static.Background}"
                             Text="{TemplateBinding Title}" />
 
 						<ToggleButton x:Name="close"
+							Style="{DynamicResource ToggleButtonStyle1}"
                             Grid.Column="4"
                             Width="20"
 							Height="20"
-                            Margin="5"
+                            Margin="5,10,5,5"
                             Content="X"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 							/>
 						<ToggleButton x:Name="maximize"
+							Style="{DynamicResource ToggleButtonStyle1}"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
-                            Margin="5"
-                            Content="#"
+                            Margin="5,10,5,5"
+							Content="#"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 							/>
 						<ToggleButton x:Name="restore"
+							Style="{DynamicResource ToggleButtonStyle1}"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
-                            Margin="5"
+                            Margin="5,10,5,5"
                             Content="+"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 									  Visibility="Collapsed"
 							/>
 						<ToggleButton x:Name="minimize"
-							
+							Style="{DynamicResource ToggleButtonStyle1}"
                             Grid.Column="2"
                             Width="20"
 							Height="20"
-                            Margin="5"
+                            Margin="5,10,5,5"
                             Content="_"
 							
                             WindowChrome.IsHitTestVisibleInChrome="True" />
