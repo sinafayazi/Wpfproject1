@@ -48,7 +48,7 @@
                             Grid.Column="4"
                             Width="20"
 							Height="20"
-                            Margin="5,10,5,5"
+                            Margin="5,10,10,5"
                             Content="X"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 							/>

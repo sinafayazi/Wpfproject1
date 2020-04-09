@@ -297,7 +297,8 @@
 										HorizontalAlignment="Left"
 										Height="0"
 										VerticalAlignment="Top" 
-										Width="0">
+										Width="0"
+										>
 									<Rectangle
 										x:Name="opaqueRect" 
 										RadiusX="12"
@@ -311,6 +312,7 @@
 								</Canvas>
 								<ItemsPresenter 
 									x:Name="ItemsPresenter" 
+									
 									KeyboardNavigation.DirectionalNavigation=
 									"Contained"
 									SnapsToDevicePixels="{TemplateBinding 
@@ -343,7 +345,8 @@
 							  SnapsToDevicePixels="{TemplateBinding 
 								SnapsToDevicePixels}" 
 							  VerticalAlignment="{TemplateBinding 
-								VerticalContentAlignment}"/>
+								VerticalContentAlignment}"
+							  />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsOpen" SourceName="PART_Popup" Value="true">
@@ -443,8 +446,7 @@
 		<Setter Property="BorderBrush" 
 				Value="{StaticResource ComboBox.Static.Border}"/>
 		<Setter Property="Foreground" 
-				Value="{DynamicResource 
-				{x:Static SystemColors.WindowTextBrushKey}}"/>
+				Value="White"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" 
 				Value="Auto"/>
