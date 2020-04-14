@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    class Library : INotifyPropertyChanged
-    {
+    class Library : ModelBase
+	{
 		private string name;
 		public string Name
 		{
@@ -40,10 +41,14 @@ namespace Wpfproject1.Model
 			get { return hasTable; }
 			set { hasTable = value; OnPropertyChanged(); }
 		}
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void OnPropertyChanged([CallerMemberName] string name = null)
+		private ObservableCollection<Shelf> shelves;
+
+		public ObservableCollection<Shelf> Shelves
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+			get { return shelves; }
+			set { shelves = value; 
+				shelves.CollectionChanged += OnCollectionChanged; }
 		}
+
 	}
 }

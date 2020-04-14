@@ -5,7 +5,7 @@
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+	<Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
 		<Setter Property='Margin'
             Value='30,10' />
 		<Setter Property='FontFamily'

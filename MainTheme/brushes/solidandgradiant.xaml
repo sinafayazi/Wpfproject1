@@ -32,8 +32,8 @@
 	<LinearGradientBrush x:Key="mydisablebottun" 
 						 EndPoint="1,.5" 
 						 StartPoint="0,.5">
-		<GradientStop Color="#FF3C3C3C"/>
-		<GradientStop Color="#FFD6C3C3" 
+		<GradientStop Color="#FF3D3D3D"/>
+		<GradientStop Color="#FF4C4C4C" 
 					  Offset="1"/>
 	</LinearGradientBrush>
 	<DropShadowEffect x:Key="mybuttonshadow" 

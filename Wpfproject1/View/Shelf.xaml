@@ -8,7 +8,7 @@
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
 	<Border   
-		Style="{StaticResource BorderStyle1}" >
+		Style="{StaticResource BorderStyle}" >
 		<Grid  >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
@@ -30,28 +30,28 @@
 				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
 			<Label 
-				Style="{StaticResource LabelStyle1}" 
+				Style="{StaticResource LabelStyle}" 
 				Name="ShelfLabel"
 				Content="Shelf"
 				Grid.Row="0" 
 				Grid.Column="0"/>
 			<Label 
-				Style="{StaticResource LabelStyle1}"  
+				Style="{StaticResource LabelStyle}"  
 				Content="Book Count" 
 				Grid.Row="1" 
 				Grid.Column="0"  />
 			<Label 
-				Style="{StaticResource LabelStyle1}"
+				Style="{StaticResource LabelStyle}"
 				Content="Position"   
 				Grid.Row="2"    
 				Grid.Column="0" />
 			<Label 
-				Style="{StaticResource LabelStyle1}" 
+				Style="{StaticResource LabelStyle}" 
 				Content="Level" 
 				Grid.Row="3" 
 				Grid.Column="0" />
 			<Label x:Name="label" 
-				   Style="{StaticResource LabelStyle1}" 
+				   Style="{StaticResource LabelStyle}" 
 				   Content="Floor" 
 				   Grid.Row="4" 
 				   Grid.Column="0" />
@@ -60,19 +60,19 @@
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource TextBoxStyle1}"/>
+				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3"
-				Style="{StaticResource TextBoxStyle1}"/>
+				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
 				TextWrapping="NoWrap" 
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource TextBoxStyle1}"/>
+				Style="{StaticResource TextBoxStyle}"/>
 			<Slider x:Name="slider"  
 					Grid.Row="4" 
 					Grid.Column="1" 
@@ -80,7 +80,7 @@
 					Cursor="Hand"  
 					Maximum="5" 
 					Value="1"   
-					Style="{StaticResource SliderStyle1}"   />
+					Style="{StaticResource SliderStyle}"   />
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 
@@ -88,7 +88,7 @@
 				Grid.ColumnSpan="2" 
 				Margin="5" 
 				Cursor="Hand" 
-				Style="{StaticResource ButtonStyle1}" />
+				Style="{StaticResource ButtonStyle}" />
 			<Button 
 				Content="Cancel"   
 				Grid.Column="2" 
@@ -96,7 +96,7 @@
 				Grid.ColumnSpan="2" 
 				Margin="5" 
 				Cursor="Hand" 
-				Style="{StaticResource ButtonStyle1}"/>
+				Style="{StaticResource ButtonStyle}"/>
 		</Grid>
 	</Border>
 </UserControl>

@@ -197,7 +197,7 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
-	<Style x:Key="SliderStyle1" TargetType="{x:Type Slider}">
+	<Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
 		<Style.Resources>
 			<Style x:Key="{x:Type ToolTip}"
 				   TargetType="{x:Type ToolTip}">

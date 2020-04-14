@@ -5,7 +5,7 @@
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+	<Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="BorderThickness" Value="1"/>
@@ -168,7 +168,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="ToggleButtonStyle1" TargetType="{x:Type ToggleButton}">
+	<Style x:Key="WindowToggleButtonStyle" TargetType="{x:Type ToggleButton}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="BorderThickness" Value="1"/>
@@ -189,7 +189,17 @@
 						SnapsToDevicePixels="true" 
 						Effect="{StaticResource mybuttonshadowd}"
 							>
-						<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						<ContentPresenter 
+							x:Name="contentPresenter"
+							Focusable="False" 
+							HorizontalAlignment="{TemplateBinding
+							HorizontalContentAlignment}" 
+							Margin="{TemplateBinding Padding}" 
+							RecognizesAccessKey="True" 
+							SnapsToDevicePixels="{TemplateBinding 
+							SnapsToDevicePixels}" 
+							VerticalAlignment="{TemplateBinding 
+							VerticalContentAlignment}"/>
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="Button.IsDefaulted" Value="true">

@@ -4,12 +4,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:vm="clr-namespace:Wpfproject1.ViewModel"
+	xmlns:md="clr-namespace:Wpfproject1.Model"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:Wpfproject1"
     mc:Ignorable="d" 
     d:DesignHeight="450"
 	d:DesignWidth="800">
+	<UserControl.Resources>
+		<vm:BookViewModel x:Key="BookViewModel"/>
+		<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type Type="md:Languages"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+	</UserControl.Resources>
+	<UserControl.CommandBindings>
+		<CommandBinding Command="Open"
+						CanExecute="OpenCommand_CanExecute"
+						Executed="OpenCommand_Executed" />
+		<CommandBinding Command="Save"
+						CanExecute="SaveCommand_CanExecute"
+						Executed="SaveCommand_Executed" />
+	</UserControl.CommandBindings>
 	<Border 
-		Style="{StaticResource BorderStyle1}"  >
+		Style="{StaticResource BorderStyle}"  >
 		<Grid   >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
@@ -30,7 +49,7 @@
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
-			<Label Style="{StaticResource LabelStyle1}"
+			<Label Style="{StaticResource LabelStyle}"
 				   Name="BookLabel"
 				   Content="Book"
 				   Grid.Row="0" 
@@ -40,66 +59,67 @@
 				Content="Book Name"
 				Grid.Row="1" 
 				Grid.Column="0"
-				Style="{StaticResource LabelStyle1}"  />
+				Style="{StaticResource LabelStyle}"  />
 			<Label
 				Content="Author"
-				Style="{StaticResource LabelStyle1}" 
+				Style="{StaticResource LabelStyle}" 
 				Grid.Row="2"
 				Grid.Column="0" />
 			<Label
 				Content="Category" 
-				Style="{StaticResource LabelStyle1}" 
+				Style="{StaticResource LabelStyle}" 
 				Grid.Row="3"
 				Grid.Column="0" />
 			<Label
 				Content="Publisher"
-				Style="{StaticResource LabelStyle1}"
+				Style="{StaticResource LabelStyle}"
 				Grid.Row="4"
 				Grid.Column="0" />
 			<Label Content="Language"
-				   Style="{StaticResource LabelStyle1}"
+				   Style="{StaticResource LabelStyle}"
 				   Grid.Row="5"  
 				   Grid.Column="0" />
 			<Label 
 				Content="Genre"     
-				Style="{StaticResource LabelStyle1}"
+				Style="{StaticResource LabelStyle}"
 				Grid.Row="6"     
 				Grid.Column="0" />
 			<TextBox 
+				Text="{Binding bookViewModel.Book.BookName, Mode=TwoWay}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource ResourceKey=TextBoxStyle1}" />
+				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
+				Text="{Binding bookViewModel.Book.Author, Mode=TwoWay}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 	 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource ResourceKey=TextBoxStyle1}" />
+				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
+				Text="{Binding bookViewModel.Book.Category, Mode=TwoWay}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource ResourceKey=TextBoxStyle1}" />
+				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
+				Text="{Binding bookViewModel.Book.Publisher, Mode=TwoWay}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource ResourceKey=TextBoxStyle1}" />
+				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<ComboBox  
 				Grid.Row="5" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Cursor="Hand"  
-				Style="{StaticResource ComboBoxStyle1}">
-				<ComboBoxItem 
-					Content="Persian"/>
-				<ComboBoxItem 
-					Content="English"/>
-				<ComboBoxItem 
-					Content="Arabic"/>
+				ItemsSource="{Binding Source={StaticResource Language}}"
+				SelectedItem="{Binding Path=bookViewModel.Book.Language}"
+				Style="{StaticResource ComboBoxStyle}">
+				
 			</ComboBox>
 
 			<TextBox 
@@ -107,7 +127,7 @@
 				Grid.Row="6" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource TextBoxStyle1}"/>
+				Style="{StaticResource TextBoxStyle}"/>
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 
@@ -115,8 +135,9 @@
 				Grid.ColumnSpan="2"
 				Margin="5" 
 				Cursor="Hand" 
-				Style="{StaticResource ButtonStyle1}"
-				Background="#FFDDDDDD"/>
+				Style="{StaticResource ButtonStyle}"
+				Command="Save"
+				/>
 			<Button 
 				Name="cancel" 
 				Content="Cancel"   
@@ -125,7 +146,8 @@
 				Grid.ColumnSpan="2" 
 				Margin="5" 
 				Cursor="Hand"  
-				Style="{StaticResource ButtonStyle1}"/>
+				Style="{StaticResource ButtonStyle}"
+				Command="Open"/>
 		</Grid>
 	</Border>
 </UserControl>
