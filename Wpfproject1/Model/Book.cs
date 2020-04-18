@@ -21,7 +21,7 @@ namespace Wpfproject1.Model
 		public string BookName
 		{
 			get { return bookName; }
-			set { bookName = value; OnPropertyChanged(nameof(BookName)); }
+			set { bookName = value; OnPropertyChanged(); }
 		}
 		private string author;
 		public string Author

@@ -9,12 +9,16 @@ namespace Wpfproject1.ViewModel
 {
     public class BookViewModel : ViewModelBase
     {
+		public BookViewModel()
+		{
+			 Book = new Book();
+		}
 		private Book book;
 
 		public Book Book
 		{
 			get { return book; }
-			set { book = value; }
+			set { book = value; OnPropertyChanged(); }
 		}
 		private ObservableCollection<Book> books;
 
