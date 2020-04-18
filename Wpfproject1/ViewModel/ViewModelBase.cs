@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.ViewModel
 {
-    class ViewModelBase :  INotifyPropertyChanged
+    public class ViewModelBase :  INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Wpfproject1
 {
     /// <summary>
-    /// Interaction logic for library.xaml
+    /// Interaction logic for shelf.xaml
     /// </summary>
-    public partial class Library : UserControl
+    public partial class ShelfView : UserControl
     {
-        public Library()
+        public ShelfView()
         {
             InitializeComponent();
         }

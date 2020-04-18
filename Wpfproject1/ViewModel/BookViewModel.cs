@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wpfproject1.Model;
 namespace Wpfproject1.ViewModel
 {
-    class BookViewModel : ViewModelBase
+    public class BookViewModel : ViewModelBase
     {
-		private Model.Book book;
+		private Book book;
 
-		public Model.Book Book
+		public Book Book
 		{
 			get { return book; }
 			set { book = value; }
+		}
+		private ObservableCollection<Book> books;
+
+		public ObservableCollection<Book> Books
+		{
+			get { return books; }
+			set { books = value; }
 		}
 
 	}

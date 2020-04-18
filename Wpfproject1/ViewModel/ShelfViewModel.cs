@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wpfproject1.Model;
 using System.Threading.Tasks;
 
 namespace Wpfproject1.ViewModel
 {
     class ShelfViewModel : ViewModelBase
     {
-		private Model.Shelf shelf;
+		private Shelf shelf;
 
-		public Model.Shelf Shelf
+		public Shelf Shelf
 		{
 			get { return shelf; }
 			set { shelf = value; OnPropertyChanged(); }

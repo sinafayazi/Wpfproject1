@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using Wpfproject1.Model;
 using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
@@ -22,13 +23,14 @@ namespace Wpfproject1
     /// <summary>
     /// Interaction logic for book.xaml
     /// </summary>
-    public partial class Book : UserControl
+    public partial class BookView : UserControl
     {
         BookViewModel bookViewModel = new BookViewModel();
-        
-        public Book()
+       
+        public BookView()
         {
             InitializeComponent();
+            
             DataContext = bookViewModel;
            
         }
@@ -59,8 +61,8 @@ namespace Wpfproject1
                     XmlSerializer serializer =
                     new XmlSerializer(typeof(Book));
                     TextWriter writer = new StreamWriter(saveFileDialog.FileName);
-                    Book book = new Book();
-                    serializer.Serialize(writer, book);
+                    
+                    serializer.Serialize(writer, bookViewModel.Book);
                 }
                 finally
                 {

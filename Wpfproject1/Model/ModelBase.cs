@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    class ModelBase : INotifyPropertyChanged
+    public class ModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)

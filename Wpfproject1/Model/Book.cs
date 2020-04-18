@@ -14,14 +14,14 @@ namespace Wpfproject1.Model
 		Persian,
 		Arabic
 	}
-	class Book : ModelBase
+	public class Book : ModelBase
     {
 		
 		private string bookName;
 		public string BookName
 		{
 			get { return bookName; }
-			set { bookName = value; OnPropertyChanged(); }
+			set { bookName = value; OnPropertyChanged(nameof(BookName)); }
 		}
 		private string author;
 		public string Author

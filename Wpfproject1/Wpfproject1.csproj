@@ -61,21 +61,21 @@
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\ShelfViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\Library.xaml.cs">
-      <DependentUpon>Library.xaml</DependentUpon>
+    <Compile Include="View\LibraryView.xaml.cs">
+      <DependentUpon>LibraryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Library.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\Shelf.cs" />
-    <Compile Include="View\Shelf.xaml.cs">
-      <DependentUpon>Shelf.xaml</DependentUpon>
+    <Compile Include="View\ShelfView.xaml.cs">
+      <DependentUpon>ShelfView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Book.xaml">
+    <Page Include="View\BookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Library.xaml">
+    <Page Include="View\LibraryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,14 +87,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Book.xaml.cs">
-      <DependentUpon>Book.xaml</DependentUpon>
+    <Compile Include="View\BookView.xaml.cs">
+      <DependentUpon>BookView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Shelf.xaml">
+    <Page Include="View\ShelfView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
