@@ -12,6 +12,7 @@
     d:DesignHeight="450"
 	d:DesignWidth="800">
 	<UserControl.Resources>
+		<vm:BookViewModel x:Key="BookViewModel"/>
 		<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
 			<ObjectDataProvider.MethodParameters>
 				<x:Type Type="md:Languages"/>
@@ -22,9 +23,7 @@
 		<CommandBinding Command="Open"
 						CanExecute="OpenCommand_CanExecute"
 						Executed="OpenCommand_Executed" />
-		<CommandBinding Command="Save"
-						CanExecute="SaveCommand_CanExecute"
-						Executed="SaveCommand_Executed" />
+		
 	</UserControl.CommandBindings>
 	<Border 
 		Style="{StaticResource BorderStyle}"  >
@@ -84,28 +83,28 @@
 				Grid.Row="6"     
 				Grid.Column="0" />
 			<TextBox 
-				Text="{Binding Book.BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding model.BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding Book.Author, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding model.Author, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 	 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding Book.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding model.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding Book.Publisher, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding model.Publisher, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" Grid.Column="1" 
 				Grid.ColumnSpan="3" 
@@ -116,7 +115,7 @@
 				Grid.ColumnSpan="3" 
 				Cursor="Hand"  
 				ItemsSource="{Binding Source={StaticResource Language}}"
-				SelectedItem="{Binding Path=Book.Language,UpdateSourceTrigger=PropertyChanged}"
+				SelectedItem="{Binding Path=model.Language,UpdateSourceTrigger=PropertyChanged}"
 				Style="{StaticResource ComboBoxStyle}">
 				
 			</ComboBox>
@@ -135,7 +134,7 @@
 				Margin="5" 
 				Cursor="Hand" 
 				Style="{StaticResource ButtonStyle}"
-				Command="Save"
+				Command="{Binding SaveCommand}"
 				/>
 			<Button 
 				Name="cancel" 

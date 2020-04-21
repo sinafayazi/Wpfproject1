@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    class Library : ModelBase
+    public class Library : ModelBase
 	{
 		private string name;
 		public string Name

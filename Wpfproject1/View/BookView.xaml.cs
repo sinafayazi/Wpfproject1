@@ -45,30 +45,7 @@ namespace Wpfproject1
 
         }
 
-        private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "xml (*.xml)|*.xml";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    XmlSerializer serializer =
-                    new XmlSerializer(typeof(Book));
-                    TextWriter writer = new StreamWriter(saveFileDialog.FileName);
-                    
-                    serializer.Serialize(writer, bookViewModel.Book);
-                }
-                finally
-                {
-
-                }
-            }
-        }
+       
+        
     }
 }

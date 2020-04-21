@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
@@ -20,9 +21,11 @@ namespace Wpfproject1
     /// </summary>
     public partial class LibraryView : UserControl
     {
+        LibraryViewModel libraryViewModel = new LibraryViewModel();
         public LibraryView()
         {
             InitializeComponent();
+            DataContext = libraryViewModel;
         }
     }
 }

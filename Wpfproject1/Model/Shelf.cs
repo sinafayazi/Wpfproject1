@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    class Shelf : ModelBase
+    public class Shelf : ModelBase
 	{
 		private int count;
 		public int Count

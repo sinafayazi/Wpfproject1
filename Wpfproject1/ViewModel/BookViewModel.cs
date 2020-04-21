@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,8 @@ namespace Wpfproject1.ViewModel
     {
 		public BookViewModel()
 		{
-			 Book = new Book();
+			 model = new Book();
+			
 		}
 		private Book book;
 
@@ -20,13 +22,7 @@ namespace Wpfproject1.ViewModel
 			get { return book; }
 			set { book = value; OnPropertyChanged(); }
 		}
-		private ObservableCollection<Book> books;
-
-		public ObservableCollection<Book> Books
-		{
-			get { return books; }
-			set { books = value; }
-		}
+		
 
 	}
 }
