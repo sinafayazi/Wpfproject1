@@ -4,12 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:vm="clr-namespace:Wpfproject1.ViewModel"
     xmlns:local="clr-namespace:Wpfproject1"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<vm:ShelfViewModel x:Key="ShelfViewModel"/>
+	</UserControl.Resources>
 	<Border   
 		Style="{StaticResource BorderStyle}" >
-		<Grid  >
+		<Grid  DataContext="{Binding Source={StaticResource ShelfViewModel}}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
@@ -56,31 +60,35 @@
 				   Grid.Row="4" 
 				   Grid.Column="0" />
 			<TextBox 
+				Text="{Binding model.Count , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
+				Text="{Binding model.Position, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3"
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
+				Text="{Binding model.Level, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap" 
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
-			<Slider x:Name="slider"  
-					Grid.Row="4" 
-					Grid.Column="1" 
-					Grid.ColumnSpan="3" 
-					Cursor="Hand"  
-					Maximum="5" 
-					Value="1"   
-					Style="{StaticResource SliderStyle}"   />
+			<Slider 
+				Value="{Binding model.Floor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				x:Name="slider"  
+				Grid.Row="4" 
+				Grid.Column="1" 
+				Grid.ColumnSpan="3" 
+				Cursor="Hand"  
+				Maximum="5" 
+				Style="{StaticResource SliderStyle}"   />
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 

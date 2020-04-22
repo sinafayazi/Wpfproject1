@@ -21,11 +21,10 @@ namespace Wpfproject1
     /// </summary>
     public partial class LibraryView : UserControl
     {
-        LibraryViewModel libraryViewModel = new LibraryViewModel();
         public LibraryView()
         {
             InitializeComponent();
-            DataContext = libraryViewModel;
+
         }
     }
 }

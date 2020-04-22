@@ -15,19 +15,14 @@
 		<vm:BookViewModel x:Key="BookViewModel"/>
 		<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
 			<ObjectDataProvider.MethodParameters>
-				<x:Type Type="md:Languages"/>
+				<x:Type Type="md:Languages" />
 			</ObjectDataProvider.MethodParameters>
 		</ObjectDataProvider>
 	</UserControl.Resources>
-	<UserControl.CommandBindings>
-		<CommandBinding Command="Open"
-						CanExecute="OpenCommand_CanExecute"
-						Executed="OpenCommand_Executed" />
-		
-	</UserControl.CommandBindings>
+	
 	<Border 
 		Style="{StaticResource BorderStyle}"  >
-		<Grid   >
+		<Grid DataContext="{Binding Source={StaticResource BookViewModel}}"  >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />

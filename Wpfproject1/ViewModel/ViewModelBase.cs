@@ -16,16 +16,31 @@ namespace Wpfproject1.ViewModel
 {
 
 
-    public class ViewModelBase : ModelBase, INotifyPropertyChanged 
+    public class ViewModelBase : ModelBase
     {
         public ICommand SaveCommand { get; set; }
         public ICommand LoadCommand { get; set; }
-        public ModelBase model { get; set; }
+        private static Library Lib;
+
+        public static  Library lib
+        {
+            get { return Lib; }
+            set { Lib = value;  }
+        }
+
+        private ModelBase Model;
+        public ModelBase model
+        {
+            get { return Model; }
+            set { Model = value; OnPropertyChanged(); }
+        }
         public TextWriter writer { get; set; }
+        public FileStream reader { get; set; }
 
         public ViewModelBase()
         {
             SaveCommand = new RelayCommand(SaveAction, CanSave,true);
+            LoadCommand = new RelayCommand(LoadAction, CanLoad, true);
         }
 
         private bool CanSave(object parameter)
@@ -33,10 +48,13 @@ namespace Wpfproject1.ViewModel
             return true;
         
         }
+        
         private void SaveAction(object parameter)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "xml (*.xml)|*.xml";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "xml (*.xml)|*.xml"
+            };
             if (saveFileDialog.ShowDialog() == true)
             {
                 try
@@ -46,7 +64,7 @@ namespace Wpfproject1.ViewModel
                     {
 
                         
-                        writer = new StreamWriter(saveFileDialog.FileName,true);
+                        writer = new StreamWriter(saveFileDialog.FileName);
 
                         serializer.Serialize(writer, model); 
                     }
@@ -61,18 +79,43 @@ namespace Wpfproject1.ViewModel
                 }
             }
         }
+        private bool CanLoad(object parameter)
+        {
+            return true;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected new void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        protected new void OnCollectionChanged(object sender,
-            NotifyCollectionChangedEventArgs e)
+        private void LoadAction(object parameter)
         {
-            OnPropertyChanged();
+             LoadMetod();
         }
 
+        public ModelBase LoadMetod()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "xml (*.xml)|*.xml"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    XmlSerializer serializer = new XmlSerializer(model.GetType());
+                    FileStream reader = new FileStream(openFileDialog.FileName, FileMode.Open);
+
+
+                    model = (Library)serializer.Deserialize(reader);
+                    
+                    
+
+                }
+                finally
+                {
+
+                }
+
+            }
+            return model;
+        }
 
     }
 

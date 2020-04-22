@@ -12,8 +12,10 @@ namespace Wpfproject1.ViewModel
     {
 		public BookViewModel()
 		{
-			 model = new Book();
 			
+			model = lib.Shelves.Last().Books.Last();
+
+
 		}
 		private Book book;
 

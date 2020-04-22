@@ -5,6 +5,7 @@ using System.Text;
 using Wpfproject1.Model;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace Wpfproject1.ViewModel
 {
@@ -15,8 +16,22 @@ namespace Wpfproject1.ViewModel
 
 		public LibraryViewModel()
 		{
-			model = new Library();
 			
+			lib = new Library();
+			model = lib;
+			 lib= (Library)LoadMetod();
+			model = lib;
+
+			if (lib.Shelves == null)
+			{
+				lib.Shelves = new ObservableCollection<Shelf>()
+			{ new Shelf()
+			}; 
+			}
+			
+			
+
+
 		}
 		public Library Library
 		{

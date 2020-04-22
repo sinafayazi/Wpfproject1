@@ -25,25 +25,16 @@ namespace Wpfproject1
     /// </summary>
     public partial class BookView : UserControl
     {
-        BookViewModel bookViewModel = new BookViewModel();
+       
        
         public BookView()
         {
             InitializeComponent();
             
-            DataContext = bookViewModel;
+
            
         }
 
-        private void OpenCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-
-        }
 
        
         
