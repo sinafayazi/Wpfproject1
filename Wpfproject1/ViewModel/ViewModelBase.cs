@@ -59,18 +59,18 @@ namespace Wpfproject1.ViewModel
             {
                 try
                 {
-                    XmlSerializer serializer = new XmlSerializer(model.GetType());
+                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     if (writer == null)
                     {
 
                         
                         writer = new StreamWriter(saveFileDialog.FileName);
 
-                        serializer.Serialize(writer, model); 
+                        serializer.Serialize(writer, lib); 
                     }
                     else
                     {
-                        serializer.Serialize(writer, model);
+                        serializer.Serialize(writer, lib);
                     }
                 }
                 finally

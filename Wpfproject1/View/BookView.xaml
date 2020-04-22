@@ -140,7 +140,7 @@
 				Margin="5" 
 				Cursor="Hand"  
 				Style="{StaticResource ButtonStyle}"
-				Command="Open"/>
+				Command="{Binding LoadCommand}"/>
 		</Grid>
 	</Border>
 </UserControl>
