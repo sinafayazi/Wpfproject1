@@ -29,7 +29,7 @@
 						CornerRadius='12'>
 						<Border 
 							x:Name="splitBorder" 
-							Width="{DynamicResource 
+							Width="{StaticResource 
 							{x:Static 
 							 SystemParameters.VerticalScrollBarWidthKey}}" 
 							SnapsToDevicePixels="true" 
@@ -265,7 +265,7 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition 
-					MinWidth="{DynamicResource {x:Static 
+					MinWidth="{StaticResource {x:Static 
 					SystemParameters.VerticalScrollBarWidthKey}}"
 					Width="0"/>
 			</Grid.ColumnDefinitions>

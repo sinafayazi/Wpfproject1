@@ -70,41 +70,41 @@
 				Grid.Row="5" 
 				Grid.Column="0" />
 			<TextBox  
-				Text="{Binding model.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding model.Address, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Address, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3"
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding model.Tell, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Tell, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3"
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding model.Website, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Website, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<CheckBox   
-				IsChecked="{Binding model.HasTable, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				IsChecked="{Binding Lib.HasTable, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				Margin="5" 
 				Grid.Row="5" 
 				Grid.Column="1" 
 				Cursor="Hand" 
 				HorizontalAlignment="Left" 
-				Style="{DynamicResource CheckBoxStyle}" />
+				Style="{StaticResource CheckBoxStyle}" />
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 

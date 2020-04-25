@@ -10,20 +10,9 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    public class ModelBase : INotifyPropertyChanged
+    public class ModelBase : INotifyPropertyChanged , ICloneable
     {
-        private string fileName;
-        public string FileName
-        {
-            get { return fileName; }
-            set { fileName = value;  }
-        }
-        //private TextWriter writer;
-        //public TextWriter Writer
-        //{
-        //    get { return writer; }
-        //    set { writer = value; }
-        //}
+     
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
@@ -33,6 +22,10 @@ namespace Wpfproject1.Model
             NotifyCollectionChangedEventArgs e)
         {
             OnPropertyChanged();
+        }
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

@@ -44,7 +44,7 @@
                             Text="{TemplateBinding Title}" />
 
 						<ToggleButton x:Name="close"
-							Style="{DynamicResource WindowToggleButtonStyle}"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="4"
                             Width="20"
 							Height="20"
@@ -53,7 +53,7 @@
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 							/>
 						<ToggleButton x:Name="maximize"
-							Style="{DynamicResource WindowToggleButtonStyle}"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
@@ -62,7 +62,7 @@
                             WindowChrome.IsHitTestVisibleInChrome="True" 
 							/>
 						<ToggleButton x:Name="restore"
-							Style="{DynamicResource WindowToggleButtonStyle}"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
@@ -72,7 +72,7 @@
 									  Visibility="Collapsed"
 							/>
 						<ToggleButton x:Name="minimize"
-							Style="{DynamicResource WindowToggleButtonStyle}"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="2"
                             Width="20"
 							Height="20"

@@ -25,18 +25,9 @@ namespace Wpfproject1
     /// </summary>
     public partial class BookView : UserControl
     {
-       
-       
         public BookView()
         {
             InitializeComponent();
-            
-
-           
         }
-
-
-       
-        
     }
 }

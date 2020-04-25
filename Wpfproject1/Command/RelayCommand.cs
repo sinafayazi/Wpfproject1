@@ -11,42 +11,27 @@ namespace Wpfproject1.Command
     {
         Action<object> ExecuteAction;
         Func<object, bool> CanExecuteAction;
-        bool CanExecuteCache;
-
-        public RelayCommand(Action<object> ExecuteAction, Func<object, bool> CanExecuteAction, bool CanExecuteCache)
+        public RelayCommand(Action<object> ExecuteAction,
+            Func<object, bool> CanExecuteAction)
         {
             this.CanExecuteAction = CanExecuteAction;
             this.ExecuteAction = ExecuteAction;
-            this.CanExecuteCache = CanExecuteCache;
         }
-
         public bool CanExecute(object parameter)
         {
             if (CanExecuteAction == null)
             {
                 return true;
-
             }
             else
             {
                 return CanExecuteAction(parameter);
-            }  
+            }
         }
-
         public void Execute(object parameter)
         {
             ExecuteAction(parameter);
         }
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
+        public event EventHandler CanExecuteChanged;
     }
 }

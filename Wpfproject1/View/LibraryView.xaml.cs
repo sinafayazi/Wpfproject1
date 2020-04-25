@@ -24,7 +24,6 @@ namespace Wpfproject1
         public LibraryView()
         {
             InitializeComponent();
-
         }
     }
 }

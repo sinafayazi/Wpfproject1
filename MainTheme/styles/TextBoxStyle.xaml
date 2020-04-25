@@ -80,7 +80,7 @@
 				</MultiTrigger.Conditions>
 				<Setter 
 					Property="SelectionBrush" 
-					Value="{DynamicResource 
+					Value="{StaticResource 
 					{x:Static 
 					SystemColors.InactiveSelectionHighlightBrushKey}}"/>
 			</MultiTrigger>

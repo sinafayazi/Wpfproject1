@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
@@ -14,83 +15,77 @@ using Wpfproject1.Command;
 using Wpfproject1.Model;
 namespace Wpfproject1.ViewModel
 {
-
-
     public class ViewModelBase : ModelBase
     {
-        public ICommand SaveCommand { get; set; }
-        public ICommand LoadCommand { get; set; }
-        private static Library Lib;
-
-        public static  Library lib
+        public ICommand SaveCommand
         {
-            get { return Lib; }
-            set { Lib = value;  }
+            get;
+            set;
         }
-
-        private ModelBase Model;
-        public ModelBase model
+        public ICommand LoadCommand
         {
-            get { return Model; }
-            set { Model = value; OnPropertyChanged(); }
+            get;
+            set;
         }
-        public TextWriter writer { get; set; }
-        public FileStream reader { get; set; }
-
-        public ViewModelBase()
+        private Library lib = new Library();
+        public Library Lib
         {
-            SaveCommand = new RelayCommand(SaveAction, CanSave,true);
-            LoadCommand = new RelayCommand(LoadAction, CanLoad, true);
-        }
-
-        private bool CanSave(object parameter)
-        {
-            return true;
-        
-        }
-        
-        private void SaveAction(object parameter)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            get
             {
-                Filter = "xml (*.xml)|*.xml"
-            };
-            if (saveFileDialog.ShowDialog() == true)
+                return lib;
+            }
+            set
             {
-                try
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
-                    if (writer == null)
-                    {
-
-                        
-                        writer = new StreamWriter(saveFileDialog.FileName);
-
-                        serializer.Serialize(writer, lib); 
-                    }
-                    else
-                    {
-                        serializer.Serialize(writer, lib);
-                    }
-                }
-                finally
-                {
-                    writer.Close();
-                }
+                lib = value;
+                OnPropertyChanged();
             }
         }
-        private bool CanLoad(object parameter)
+        public static Library LibTemp = new Library();
+        private Shelf shelf;
+        public Shelf Shelf
         {
-            return true;
+            get
+            {
+                return shelf;
+            }
+            set
+            {
+                shelf = value;
+                OnPropertyChanged();
+            }
 
         }
-        private void LoadAction(object parameter)
+        public static Shelf ShelfTemp = new Shelf();
+        private Book book;
+        public Book Book
         {
-             LoadMetod();
+            get
+            {
+                return book;
+            }
+            set
+            {
+                book = value;
+                OnPropertyChanged();
+            }
         }
-
-        public ModelBase LoadMetod()
+        public static Book BookTemp = new Book();
+        public TextWriter Writer
         {
+            get;
+            set;
+        }
+        public FileStream Reader
+        {
+            get;
+            set;
+        }
+        public ViewModelBase()
+        {
+        }
+        public ModelBase FirstLoadMetod()
+        {
+
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "xml (*.xml)|*.xml"
@@ -99,24 +94,29 @@ namespace Wpfproject1.ViewModel
             {
                 try
                 {
-                    XmlSerializer serializer = new XmlSerializer(model.GetType());
+                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     FileStream reader = new FileStream(openFileDialog.FileName, FileMode.Open);
-
-
-                    model = (Library)serializer.Deserialize(reader);
-                    
-                    
-
+                    Lib = (Library)serializer.Deserialize(reader);
+                    LibTemp = (Library)Lib.Clone();
+                    reader.Close();
+                    reader.Dispose();
                 }
                 finally
                 {
-
                 }
-
             }
-            return model;
+            else
+            {
+                LibTemp.Shelves = new ObservableCollection<Shelf>()
+            { new Shelf()
+            };
+                LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
+            { new Book()
+            };
+            }
+            ShelfTemp = (Shelf)LibTemp.Shelves.Last();
+            BookTemp = (Book)LibTemp.Shelves.Last().Books.Last();
+            return Lib;
         }
-
     }
-
 }

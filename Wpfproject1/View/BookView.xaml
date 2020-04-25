@@ -13,6 +13,7 @@
 	d:DesignWidth="800">
 	<UserControl.Resources>
 		<vm:BookViewModel x:Key="BookViewModel"/>
+		
 		<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
 			<ObjectDataProvider.MethodParameters>
 				<x:Type Type="md:Languages" />
@@ -78,28 +79,28 @@
 				Grid.Row="6"     
 				Grid.Column="0" />
 			<TextBox 
-				Text="{Binding model.BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Book.BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding model.Author, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Book.Author, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 	 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding model.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Book.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
 			<TextBox 
-				Text="{Binding model.Publisher, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Book.Publisher, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" Grid.Column="1" 
 				Grid.ColumnSpan="3" 
@@ -110,7 +111,7 @@
 				Grid.ColumnSpan="3" 
 				Cursor="Hand"  
 				ItemsSource="{Binding Source={StaticResource Language}}"
-				SelectedItem="{Binding Path=model.Language,UpdateSourceTrigger=PropertyChanged}"
+				SelectedItem="{Binding Path=Book.Language,UpdateSourceTrigger=PropertyChanged}"
 				Style="{StaticResource ComboBoxStyle}">
 				
 			</ComboBox>
@@ -120,7 +121,8 @@
 				Grid.Row="6" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
-				Style="{StaticResource TextBoxStyle}"/>
+				Style="{StaticResource TextBoxStyle}"
+				Text="{Binding Book.Genre, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 

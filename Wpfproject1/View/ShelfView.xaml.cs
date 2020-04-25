@@ -21,11 +21,9 @@ namespace Wpfproject1
     /// </summary>
     public partial class ShelfView : UserControl
     {
-       
         public ShelfView()
         {
             InitializeComponent();
-           
         }
     }
 }
