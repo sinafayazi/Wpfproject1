@@ -22,7 +22,7 @@ namespace Wpfproject1.ViewModel
             LoadCommand = new RelayCommand(LoadAction, CanLoad);
         }
         private bool CanSave(object parameter)
-        {
+       {
             return string.IsNullOrEmpty(Shelf["Count"]) && string.IsNullOrEmpty(Shelf["Level"]) && string.IsNullOrEmpty(Shelf["Position"]) && string.IsNullOrEmpty(Shelf["Floor"]);  
         }
         private void SaveAction(object parameter)

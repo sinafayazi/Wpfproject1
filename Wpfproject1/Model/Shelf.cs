@@ -13,15 +13,15 @@ namespace Wpfproject1.Model
     public class Shelf : ModelBase, IDataErrorInfo
     {
         private int count;
-        public int Count
+        public string Count
         {
             get
             {
-                return count;
+                return count.ToString();
             }
             set
             {
-                count = value;
+                int.TryParse(value, out count);
                 OnPropertyChanged();
             }
         }
@@ -39,15 +39,15 @@ namespace Wpfproject1.Model
             }
         }
         private int level;
-        public int Level
+        public string Level
         {
             get
             {
-                return level;
+                return level.ToString();
             }
             set
             {
-                level = value;
+                int.TryParse(value, out level);
                 OnPropertyChanged();
             }
         }
@@ -94,13 +94,13 @@ namespace Wpfproject1.Model
                 switch (PropertyName)
                 {
                     case "Count":
-                        if (Count<0 || Count>100)
+                   if (count<0 || count>100 )
                         {
                             result = "Book Count is out of expected range (0,100)";
                         }
                         break;
                     case "Level":
-                        if (Level < 0 || Level > 100)
+                        if (level < 0 || level > 100)
                         {
                             result = "Level is out of expected range (0,100)";
                         }
