@@ -23,7 +23,10 @@ namespace Wpfproject1.ViewModel
         }
         private bool CanSave(object parameter)
        {
-            return string.IsNullOrEmpty(Shelf["Count"]) && string.IsNullOrEmpty(Shelf["Level"]) && string.IsNullOrEmpty(Shelf["Position"]) && string.IsNullOrEmpty(Shelf["Floor"]);  
+            return string.IsNullOrEmpty(Shelf["Count"])
+                && string.IsNullOrEmpty(Shelf["Level"]) 
+                && string.IsNullOrEmpty(Shelf["Position"])
+                && string.IsNullOrEmpty(Shelf["Floor"]);  
         }
         private void SaveAction(object parameter)
         {
@@ -42,7 +45,6 @@ namespace Wpfproject1.ViewModel
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     LibTemp.Shelves.Add(Shelf);
-
                     Writer = new StreamWriter(saveFileDialog.FileName);
                     serializer.Serialize(Writer, LibTemp);
                     Writer.Close();

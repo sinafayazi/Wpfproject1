@@ -25,7 +25,10 @@ namespace Wpfproject1.ViewModel
         }
         private bool CanSave(object parameter)
         {
-            return string.IsNullOrEmpty(Lib["Name"]) && string.IsNullOrEmpty(Lib["Address"]) && string.IsNullOrEmpty(Lib["Tell"]) && string.IsNullOrEmpty(Lib["Website"]);
+            return string.IsNullOrEmpty(Lib["Name"]) && 
+                string.IsNullOrEmpty(Lib["Address"]) && 
+                string.IsNullOrEmpty(Lib["Tell"]) &&
+                string.IsNullOrEmpty(Lib["Website"]);
         }
         private void SaveAction(object parameter)
         {

@@ -22,7 +22,12 @@ namespace Wpfproject1.ViewModel
         }
         private bool CanSave(object parameter)
         {
-            return string.IsNullOrEmpty(Book["BookName"]) && string.IsNullOrEmpty(Book["Author"]) && string.IsNullOrEmpty(Book["Category"]) && string.IsNullOrEmpty(Book["Genre"]) && string.IsNullOrEmpty(Book["Email"]) && string.IsNullOrEmpty(Book["Publisher"]);
+            return string.IsNullOrEmpty(Book["BookName"]) 
+                && string.IsNullOrEmpty(Book["Author"]) 
+                && string.IsNullOrEmpty(Book["Category"]) 
+                && string.IsNullOrEmpty(Book["Genre"]) 
+                && string.IsNullOrEmpty(Book["Email"]) 
+                && string.IsNullOrEmpty(Book["Publisher"]);
         }
         private void SaveAction(object parameter)
         {
