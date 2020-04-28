@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Wpfproject1.ViewModel
         }
         private bool CanSave(object parameter)
         {
-            return true;
+            return string.IsNullOrEmpty(Book["BookName"]) && string.IsNullOrEmpty(Book["Author"]) && string.IsNullOrEmpty(Book["Category"]) && string.IsNullOrEmpty(Book["Genre"]) && string.IsNullOrEmpty(Book["Email"]) && string.IsNullOrEmpty(Book["Publisher"]);
         }
         private void SaveAction(object parameter)
         {
@@ -36,23 +37,21 @@ namespace Wpfproject1.ViewModel
             };
             if (saveFileDialog.ShowDialog() == true)
             {
+                StreamWriter Writer;
                 try
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     LibTemp.Shelves.Last().Books.Add(Book);
-                    if (Writer == null)
-                    {
-                        Writer = new StreamWriter(saveFileDialog.FileName);
-                        serializer.Serialize(Writer, LibTemp);
-                    }
-                    else
-                    {
-                        serializer.Serialize(Writer, LibTemp);
-                    }
+
+                    Writer = new StreamWriter(saveFileDialog.FileName);
+                    serializer.Serialize(Writer, LibTemp);
+                    Writer.Close();
+                    Writer.Dispose();
                 }
+
                 finally
                 {
-                    Writer.Close();
+
                 }
             }
         }
@@ -67,6 +66,12 @@ namespace Wpfproject1.ViewModel
         public void LoadMetod()
         {
             Book = (Book)BookTemp.Clone();
+            Book.PropertyChanged += Model_PropertyChanged;
+
+        }
+        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            (SaveCommand as RelayCommand).RaiseCanExecuteChanged();
         }
     }
 }

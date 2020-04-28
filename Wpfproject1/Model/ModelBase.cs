@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    public class ModelBase : INotifyPropertyChanged , ICloneable
+    public class ModelBase : INotifyPropertyChanged , ICloneable 
     {
-     
+       
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {

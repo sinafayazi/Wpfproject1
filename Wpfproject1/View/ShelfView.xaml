@@ -60,34 +60,34 @@
 				   Grid.Row="4" 
 				   Grid.Column="0" />
 			<TextBox 
-				Text="{Binding Shelf.Count , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Shelf.Count , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
-				Text="{Binding Shelf.Position, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Shelf.Position, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged , ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3"
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox 
-				Text="{Binding Shelf.Level, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Shelf.Level, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap" 
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<Slider 
-				Value="{Binding Shelf.Floor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Value="{Binding Shelf.Floor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				x:Name="slider"  
 				Grid.Row="4" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Cursor="Hand"  
-				Maximum="5" 
+				Maximum="100" 
 				Style="{StaticResource SliderStyle}"   />
 			<Button 
 				Content="Ok" 

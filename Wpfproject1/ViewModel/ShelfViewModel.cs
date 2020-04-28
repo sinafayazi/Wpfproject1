@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.IO;
 using Microsoft.Win32;
 using Wpfproject1.Command;
+using System.ComponentModel;
 
 namespace Wpfproject1.ViewModel
 {
@@ -22,7 +23,7 @@ namespace Wpfproject1.ViewModel
         }
         private bool CanSave(object parameter)
         {
-            return true;
+            return string.IsNullOrEmpty(Shelf["Count"]) && string.IsNullOrEmpty(Shelf["Level"]) && string.IsNullOrEmpty(Shelf["Position"]) && string.IsNullOrEmpty(Shelf["Floor"]);  
         }
         private void SaveAction(object parameter)
         {
@@ -36,24 +37,20 @@ namespace Wpfproject1.ViewModel
             };
             if (saveFileDialog.ShowDialog() == true)
             {
+                StreamWriter Writer;
                 try
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     LibTemp.Shelves.Add(Shelf);
-                    if (Writer == null)
-                    {
-                        Writer = new StreamWriter(saveFileDialog.FileName);
-                        serializer.Serialize(Writer, LibTemp);
-                    }
-                    else
-                    {
-                        serializer.Serialize(Writer, LibTemp);
-                    }
+
+                    Writer = new StreamWriter(saveFileDialog.FileName);
+                    serializer.Serialize(Writer, LibTemp);
+                    Writer.Close();
+                    Writer.Dispose();
                 }
                 finally
                 {
-                    Writer.Close();
-                    Writer.Dispose();
+
                 }
             }
         }
@@ -68,6 +65,11 @@ namespace Wpfproject1.ViewModel
         public void LoadMetod()
         {
             Shelf = (Shelf)ShelfTemp.Clone();
+            Shelf.PropertyChanged += Model_PropertyChanged;
+        }
+        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            (SaveCommand as RelayCommand).RaiseCanExecuteChanged();
         }
 
     }

@@ -70,28 +70,28 @@
 				Grid.Row="5" 
 				Grid.Column="0" />
 			<TextBox  
-				Text="{Binding Lib.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding Lib.Address, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Address, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3"
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding Lib.Tell, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Tell, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3"
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"/>
 			<TextBox  
-				Text="{Binding Lib.Website, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+				Text="{Binding Lib.Website, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" 
 				Grid.Column="1" 

@@ -70,16 +70,7 @@ namespace Wpfproject1.ViewModel
             }
         }
         public static Book BookTemp = new Book();
-        public TextWriter Writer
-        {
-            get;
-            set;
-        }
-        public FileStream Reader
-        {
-            get;
-            set;
-        }
+
         public ViewModelBase()
         {
         }
@@ -114,9 +105,25 @@ namespace Wpfproject1.ViewModel
             { new Book()
             };
             }
+            if (LibTemp.Shelves.Count == 0)
+            {
+                LibTemp.Shelves = new ObservableCollection<Shelf>()
+            { new Shelf()
+            };
+            }
+            if (LibTemp.Shelves.Last().Books == null)
+            {
+                LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
+            { new Book()
+            };
+            }
+
             ShelfTemp = (Shelf)LibTemp.Shelves.Last();
             BookTemp = (Book)LibTemp.Shelves.Last().Books.Last();
-            return Lib;
+            
+            return LibTemp;
         }
+
+     
     }
 }

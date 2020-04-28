@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using Microsoft.Win32;
 using System.Xml.Serialization;
 using Wpfproject1.Command;
+using System.ComponentModel;
 
 namespace Wpfproject1.ViewModel
 {
@@ -16,13 +17,15 @@ namespace Wpfproject1.ViewModel
     {
         public LibraryViewModel()
         {
-            Lib = (Library)FirstLoadMetod();
+            FirstLoadMetod();
+            //Lib = (Library)FirstLoadMetod();
+            LoadMetod();
             SaveCommand = new RelayCommand(SaveAction, CanSave);
             LoadCommand = new RelayCommand(LoadAction, CanLoad);
         }
         private bool CanSave(object parameter)
         {
-            return true;
+            return string.IsNullOrEmpty(Lib["Name"]) && string.IsNullOrEmpty(Lib["Address"]) && string.IsNullOrEmpty(Lib["Tell"]) && string.IsNullOrEmpty(Lib["Website"]);
         }
         private void SaveAction(object parameter)
         {
@@ -37,26 +40,21 @@ namespace Wpfproject1.ViewModel
             };
             if (saveFileDialog.ShowDialog() == true)
             {
+                StreamWriter Writer;
                 try
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Library));
                     LibTemp = (Library)Lib.Clone();
-                    if (Writer == null)
-                    {
+
 
                         Writer = new StreamWriter(saveFileDialog.FileName);
                         serializer.Serialize(Writer, LibTemp);
-
-                    }
-                    else
-                    {
-                        serializer.Serialize(Writer, LibTemp);
-                    }
+                    Writer.Close();
+                    Writer.Dispose();
                 }
                 finally
                 {
-                    Writer.Close();
-                    Writer.Dispose();
+
                 }
             }
         }
@@ -71,6 +69,11 @@ namespace Wpfproject1.ViewModel
         public void LoadMetod()
         {
             Lib = (Library)LibTemp.Clone();
+            Lib.PropertyChanged += Model_PropertyChanged;
+        }
+        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            (SaveCommand as RelayCommand).RaiseCanExecuteChanged();
         }
     }
 }

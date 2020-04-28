@@ -33,5 +33,11 @@ namespace Wpfproject1.Command
             ExecuteAction(parameter);
         }
         public event EventHandler CanExecuteChanged;
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, new EventArgs());
+        }
+
+
     }
 }
