@@ -24,7 +24,7 @@
 						Padding="{TemplateBinding Padding}"
 						SnapsToDevicePixels="true">
 						<ContentPresenter 
-							HorizontalAlignment="Left"
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 							RecognizesAccessKey="True" 
 							SnapsToDevicePixels="{TemplateBinding 
 							SnapsToDevicePixels}"

@@ -15,18 +15,33 @@ namespace Wpfproject1.ViewModel
 {
     class ShelfViewModel : ViewModelBase
     {
+        private Shelf shelf;
+        public Shelf Shelf
+        {
+            get
+            {
+                return shelf;
+            }
+            set
+            {
+                shelf = value;
+                OnPropertyChanged();
+            }
+
+        }
         public ShelfViewModel()
         {
+            Shelf = new Shelf();
             LoadMetod();
             SaveCommand = new RelayCommand(SaveAction, CanSave);
             LoadCommand = new RelayCommand(LoadAction, CanLoad);
         }
         private bool CanSave(object parameter)
-       {
+        {
             return string.IsNullOrEmpty(Shelf["Count"])
-                && string.IsNullOrEmpty(Shelf["Level"]) 
+                && string.IsNullOrEmpty(Shelf["Level"])
                 && string.IsNullOrEmpty(Shelf["Position"])
-                && string.IsNullOrEmpty(Shelf["Floor"]);  
+                && string.IsNullOrEmpty(Shelf["Floor"]);
         }
         private void SaveAction(object parameter)
         {
@@ -34,27 +49,7 @@ namespace Wpfproject1.ViewModel
         }
         public void SaveMethod()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "xml (*.xml)|*.xml"
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                StreamWriter Writer;
-                try
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
-                    LibTemp.Shelves.Add(Shelf);
-                    Writer = new StreamWriter(saveFileDialog.FileName);
-                    serializer.Serialize(Writer, LibTemp);
-                    Writer.Close();
-                    Writer.Dispose();
-                }
-                finally
-                {
-
-                }
-            }
+            StorageManager.Save(Shelf);
         }
         private bool CanLoad(object parameter)
         {
@@ -66,7 +61,7 @@ namespace Wpfproject1.ViewModel
         }
         public void LoadMetod()
         {
-            Shelf = (Shelf)ShelfTemp.Clone();
+            Shelf = (Shelf)StorageManager.Load(typeof(Shelf));
             Shelf.PropertyChanged += Model_PropertyChanged;
         }
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)

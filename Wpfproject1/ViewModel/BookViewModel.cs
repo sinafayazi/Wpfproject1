@@ -14,8 +14,22 @@ namespace Wpfproject1.ViewModel
 {
     public class BookViewModel : ViewModelBase
     {
+        private Book book;
+        public Book Book
+        {
+            get
+            {
+                return book;
+            }
+            set
+            {
+                book = value;
+                OnPropertyChanged();
+            }
+        }
         public BookViewModel()
         {
+            Book = new Book();
             LoadMetod();
             SaveCommand = new RelayCommand(SaveAction, CanSave);
             LoadCommand = new RelayCommand(LoadAction, CanLoad);
@@ -35,30 +49,7 @@ namespace Wpfproject1.ViewModel
         }
         public void SaveMethod()
         {
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "xml (*.xml)|*.xml"
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                StreamWriter Writer;
-                try
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
-                    LibTemp.Shelves.Last().Books.Add(Book);
-
-                    Writer = new StreamWriter(saveFileDialog.FileName);
-                    serializer.Serialize(Writer, LibTemp);
-                    Writer.Close();
-                    Writer.Dispose();
-                }
-
-                finally
-                {
-
-                }
-            }
+            StorageManager.Save(Book);
         }
         private bool CanLoad(object parameter)
         {
@@ -70,7 +61,7 @@ namespace Wpfproject1.ViewModel
         }
         public void LoadMetod()
         {
-            Book = (Book)BookTemp.Clone();
+            Book = (Book)StorageManager.Load(typeof(Book));
             Book.PropertyChanged += Model_PropertyChanged;
 
         }

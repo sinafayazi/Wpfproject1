@@ -22,7 +22,7 @@
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition 
-					Width="{Binding ElementName=LibraryLabel, Path=ActualWidth}" />
+					Width="{Binding ElementName=HasTables, Path=ActualWidth}" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
@@ -39,33 +39,39 @@
 			</Grid.RowDefinitions>
 			<Label 
 				Style="{StaticResource LabelStyle}" 
-				Name="LibraryLabel" 
+				HorizontalAlignment="Left"
+				
 				Content="Library" 
 				Grid.Row="0" 
 				Grid.Column="0" />
 			<Label 
 				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Name" 
 				Grid.Row="1" 
 				Grid.Column="0"/>
 			<Label 
 				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Address" 
 				Grid.Row="2" 
 				Grid.Column="0"  />
 			<Label 
 				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Tell"    
 				Grid.Row="3"    
 				Grid.Column="0" />
 			<Label 
 				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Website"  
 				Grid.Row="4"  
 				Grid.Column="0" />
 			<Label 
-				Style="{StaticResource LabelStyle}" 
 				Name="HasTables" 
+				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Has Tables" 
 				Grid.Row="5" 
 				Grid.Column="0" />

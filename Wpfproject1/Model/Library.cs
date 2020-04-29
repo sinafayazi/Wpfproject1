@@ -87,7 +87,6 @@ namespace Wpfproject1.Model
             set
             {
                 shelves = value;
-                shelves.CollectionChanged += OnCollectionChanged;
             }
         }
 

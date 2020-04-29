@@ -74,7 +74,6 @@ namespace Wpfproject1.Model
             set
             {
                 books = value;
-                books.CollectionChanged += OnCollectionChanged;
             }
         }
         public string Error

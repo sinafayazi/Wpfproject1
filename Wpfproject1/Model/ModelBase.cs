@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    public class ModelBase : INotifyPropertyChanged , ICloneable 
+    public class ModelBase : INotifyPropertyChanged
     {
        
 
@@ -24,9 +24,6 @@ namespace Wpfproject1.Model
         {
             OnPropertyChanged();
         }
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+
     }
 }

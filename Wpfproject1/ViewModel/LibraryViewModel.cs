@@ -13,20 +13,32 @@ using System.ComponentModel;
 
 namespace Wpfproject1.ViewModel
 {
-    class LibraryViewModel : ViewModelBase
+    public class LibraryViewModel : ViewModelBase
     {
+        private Library lib;
+        public Library Lib
+        {
+            get
+            {
+                return lib;
+            }
+            set
+            {
+                lib = value;
+                OnPropertyChanged();
+            }
+        }
         public LibraryViewModel()
         {
-            FirstLoadMetod();
-            //Lib = (Library)FirstLoadMetod();
+            Lib = new Library();
             LoadMetod();
             SaveCommand = new RelayCommand(SaveAction, CanSave);
             LoadCommand = new RelayCommand(LoadAction, CanLoad);
         }
         private bool CanSave(object parameter)
         {
-            return string.IsNullOrEmpty(Lib["Name"]) && 
-                string.IsNullOrEmpty(Lib["Address"]) && 
+            return string.IsNullOrEmpty(Lib["Name"]) &&
+                string.IsNullOrEmpty(Lib["Address"]) &&
                 string.IsNullOrEmpty(Lib["Tell"]) &&
                 string.IsNullOrEmpty(Lib["Website"]);
         }
@@ -36,30 +48,7 @@ namespace Wpfproject1.ViewModel
         }
         public void SaveMethod()
         {
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "xml (*.xml)|*.xml"
-            };
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                StreamWriter Writer;
-                try
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
-                    LibTemp = (Library)Lib.Clone();
-
-
-                        Writer = new StreamWriter(saveFileDialog.FileName);
-                        serializer.Serialize(Writer, LibTemp);
-                    Writer.Close();
-                    Writer.Dispose();
-                }
-                finally
-                {
-
-                }
-            }
+            StorageManager.Save(Lib);
         }
         private bool CanLoad(object parameter)
         {
@@ -71,7 +60,7 @@ namespace Wpfproject1.ViewModel
         }
         public void LoadMetod()
         {
-            Lib = (Library)LibTemp.Clone();
+            Lib = (Library)StorageManager.Load(typeof(Library));
             Lib.PropertyChanged += Model_PropertyChanged;
         }
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)

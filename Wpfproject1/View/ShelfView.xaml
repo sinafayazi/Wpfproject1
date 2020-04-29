@@ -18,7 +18,7 @@
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition 
-					Width="{Binding ElementName=ShelfLabel,
+					Width="{Binding ElementName=BookCount,
 					Path=ActualWidth}" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
@@ -35,27 +35,32 @@
 			</Grid.RowDefinitions>
 			<Label 
 				Style="{StaticResource LabelStyle}" 
-				Name="ShelfLabel"
+				HorizontalAlignment="Left"
+				
 				Content="Shelf"
 				Grid.Row="0" 
 				Grid.Column="0"/>
-			<Label 
+			<Label Name="BookCount"
 				Style="{StaticResource LabelStyle}"  
+				HorizontalAlignment="Left"
 				Content="Book Count" 
 				Grid.Row="1" 
 				Grid.Column="0"  />
 			<Label 
 				Style="{StaticResource LabelStyle}"
+				HorizontalAlignment="Left"
 				Content="Position"   
 				Grid.Row="2"    
 				Grid.Column="0" />
 			<Label 
 				Style="{StaticResource LabelStyle}" 
+				HorizontalAlignment="Left"
 				Content="Level" 
 				Grid.Row="3" 
 				Grid.Column="0" />
-			<Label x:Name="label" 
+			<Label 
 				   Style="{StaticResource LabelStyle}" 
+				   HorizontalAlignment="Left"
 				   Content="Floor" 
 				   Grid.Row="4" 
 				   Grid.Column="0" />
