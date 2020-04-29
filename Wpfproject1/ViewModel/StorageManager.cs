@@ -18,7 +18,6 @@ namespace Wpfproject1
         public static string FliePath;
         public static void Save(object instance)
         {
-
             Library LibTemp = new Library();
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
@@ -27,39 +26,35 @@ namespace Wpfproject1
             if (saveFileDialog.ShowDialog() == true)
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Library));
-                
-                     LibTemp= (Library)Load(typeof(Library));
+
+                LibTemp = (Library)Load(typeof(Library));
                 if (LibTemp.Shelves == null)
                 {
                     LibTemp.Shelves = new ObservableCollection<Shelf>()
-            { new Shelf()
-            };
+                        { new Shelf()};
                 }
                 if (LibTemp.Shelves.Last().Books == null)
                 {
                     LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
-            { new Book()
-            };
+                        { new Book() };
                 }
                 if (instance is Book)
-                    {
+                {
 
-                        LibTemp.Shelves.Last().Books.Add((Book)instance);
-                    }
-                    else if (instance is Shelf)
-                    {
-                        LibTemp.Shelves.Add((Shelf)instance);
-                    }
-                    else
-                    {
-                        LibTemp = (Library)instance;
-                    }
-
-                    StreamWriter Writer = new StreamWriter(saveFileDialog.FileName);
-
-                    serializer.Serialize(Writer, LibTemp);
-                    Writer.Close();
-                    Writer.Dispose();
+                    LibTemp.Shelves.Last().Books.Add((Book)instance);
+                }
+                else if (instance is Shelf)
+                {
+                    LibTemp.Shelves.Add((Shelf)instance);
+                }
+                else
+                {
+                    LibTemp = (Library)instance;
+                }
+                StreamWriter Writer = new StreamWriter(saveFileDialog.FileName);
+                serializer.Serialize(Writer, LibTemp);
+                Writer.Close();
+                Writer.Dispose();
             }
         }
         public static object Load(Type type)
@@ -69,7 +64,6 @@ namespace Wpfproject1
             Shelf ShelfTemp = new Shelf();
             if (IsFirst == true)
             {
-
                 OpenFileDialog openFileDialog = new OpenFileDialog
                 {
                     Filter = "xml (*.xml)|*.xml"
@@ -82,17 +76,13 @@ namespace Wpfproject1
                     LibTemp = (Library)serializer.Deserialize(reader);
                     reader.Close();
                     reader.Dispose();
-
                 }
                 else
                 {
                     LibTemp.Shelves = new ObservableCollection<Shelf>()
-            { new Shelf()
-            };
+                        { new Shelf() };
                     LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
-            { new Book()
-            };
-
+                        { new Book() };
                 }
                 IsFirst = false;
                 if (type == typeof(Book))
@@ -114,22 +104,20 @@ namespace Wpfproject1
                 {
                     if (type == typeof(Book))
                     {
-                        
+
                         return BookTemp;
                     }
                     else if (type == typeof(Shelf))
                     {
-                       
+
                         return ShelfTemp;
                     }
                     return LibTemp;
                 }
-                FileStream reader = new FileStream(FliePath, FileMode.Open); 
-                
+                FileStream reader = new FileStream(FliePath, FileMode.Open);
                 LibTemp = (Library)serializer.Deserialize(reader);
                 reader.Close();
                 reader.Dispose();
-
                 if (LibTemp.Shelves == null)
                 {
                     LibTemp.Shelves = new ObservableCollection<Shelf>()
@@ -153,10 +141,7 @@ namespace Wpfproject1
                     return ShelfTemp;
                 }
                 return LibTemp;
-
             }
-
         }
-
     }
 }

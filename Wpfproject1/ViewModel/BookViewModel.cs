@@ -63,7 +63,6 @@ namespace Wpfproject1.ViewModel
         {
             Book = (Book)StorageManager.Load(typeof(Book));
             Book.PropertyChanged += Model_PropertyChanged;
-
         }
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
