@@ -20,11 +20,11 @@
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<local:Library 
+		<local:LibraryView 
 			Grid.Column="0"/>
-		<local:Shelf 
+		<local:ShelfView 
 			Grid.Column="1"/>
-		<local:Book 
+		<local:BookView 
 			Grid.Column="2"/>
 	</Grid>
 </Window>

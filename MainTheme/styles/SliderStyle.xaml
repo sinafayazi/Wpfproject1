@@ -121,7 +121,7 @@
 					<Canvas Margin="-6,-1">
 						<Rectangle 
 							x:Name="PART_SelectionRange"
-							Fill="{DynamicResource {x:Static 
+							Fill="{StaticResource {x:Static 
 							SystemColors.HighlightBrushKey}}"
 							Height="4.0"
 							Visibility="Hidden"/>
@@ -197,7 +197,7 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
-	<Style x:Key="SliderStyle1" TargetType="{x:Type Slider}">
+	<Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
 		<Style.Resources>
 			<Style x:Key="{x:Type ToolTip}"
 				   TargetType="{x:Type ToolTip}">
@@ -222,11 +222,11 @@
 										<LinearGradientBrush.GradientStops>
 											<GradientStopCollection>
 												<GradientStop 
-													Color="{DynamicResource 
+													Color="{StaticResource 
 													ControlLightColor}"
 													Offset="0.0" />
 												<GradientStop 
-													Color="{DynamicResource 
+													Color="{StaticResource 
 													ControlMediumColor}"
 													Offset="1.0" />
 											</GradientStopCollection>
@@ -236,7 +236,7 @@
 								</Border.Background>
 								<Border.BorderBrush>
 									<SolidColorBrush 
-										Color="{DynamicResource 
+										Color="{StaticResource 
 										BorderMediumColor}" />
 								</Border.BorderBrush>
 								<ContentPresenter 

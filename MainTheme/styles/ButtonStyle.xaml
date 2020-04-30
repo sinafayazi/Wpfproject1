@@ -5,7 +5,7 @@
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+	<Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="BorderThickness" Value="1"/>
@@ -39,28 +39,7 @@
 							VerticalContentAlignment}" />
 					</Border>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsDefaulted" Value="true">
-							<Trigger.EnterActions>
-								<BeginStoryboard>
-									<Storyboard>
-										<DoubleAnimation 
-											Storyboard.TargetName="border"
-											Storyboard.TargetProperty=
-											"(Effect).Opacity"
-											To="0" 
-											Duration="0:0:0:0.1"/>
-
-									</Storyboard>
-								</BeginStoryboard>
-							</Trigger.EnterActions>
-
-							<Setter 
-								Property="BorderBrush" 
-								TargetName="border" 
-								Value="{StaticResource 
-								Button.Static.Border}"/>
-
-						</Trigger>
+						
 						<Trigger Property="IsMouseOver" Value="true">
 							<Trigger.EnterActions>
 								<BeginStoryboard>
@@ -168,7 +147,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+	<Style x:Key="WindowToggleButtonStyle" TargetType="{x:Type ToggleButton}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="BorderThickness" Value="1"/>
@@ -179,7 +158,7 @@
             Value='25' />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type Button}">
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
 					<Border 
 						x:Name="border" 
 						CornerRadius="15" 
@@ -187,41 +166,22 @@
 						BorderThickness="{TemplateBinding BorderThickness}" 
 						Background="{StaticResource Button.Static.Background}" 
 						SnapsToDevicePixels="true" 
-						Effect="{StaticResource mybuttonshadowd}" >
-
+						Effect="{StaticResource mybuttonshadowd}"
+							>
 						<ContentPresenter 
-							x:Name="contentPresenter" 
+							x:Name="contentPresenter"
 							Focusable="False" 
 							HorizontalAlignment="{TemplateBinding
 							HorizontalContentAlignment}" 
 							Margin="{TemplateBinding Padding}" 
 							RecognizesAccessKey="True" 
-							SnapsToDevicePixels="{TemplateBinding
+							SnapsToDevicePixels="{TemplateBinding 
 							SnapsToDevicePixels}" 
 							VerticalAlignment="{TemplateBinding 
-							VerticalContentAlignment}" />
+							VerticalContentAlignment}"/>
 					</Border>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsDefaulted" Value="true">
-							<Trigger.EnterActions>
-								<BeginStoryboard>
-									<Storyboard>
-										<DoubleAnimation 
-											Storyboard.TargetName="border"
-											Storyboard.TargetProperty=
-											"(Effect).Opacity" 
-											To="0" 
-											Duration="0:0:0:0.1"/>
-
-									</Storyboard>
-								</BeginStoryboard>
-							</Trigger.EnterActions>
-
-							<Setter Property="BorderBrush" 
-									TargetName="border" 
-									Value="{StaticResource 
-									Button.Static.Border}"/>
-						</Trigger>
+						
 						<Trigger Property="IsMouseOver" Value="true">
 							<Trigger.EnterActions>
 								<BeginStoryboard>
@@ -232,10 +192,10 @@
 											"(Effect).Opacity" 
 											To="1" 
 											Duration="0:0:0:0.05"/>
-										
+
 									</Storyboard>
 								</BeginStoryboard>
-								
+
 							</Trigger.EnterActions>
 							<Trigger.ExitActions>
 								<BeginStoryboard>
@@ -246,7 +206,7 @@
 											"(Effect).Opacity" 
 											To="0" 
 											Duration="0:0:0:0.05"/>
-										
+
 									</Storyboard>
 								</BeginStoryboard>
 							</Trigger.ExitActions>
@@ -264,8 +224,7 @@
 								Value="6" 
 								TargetName="border"/>
 						</Trigger>
-						<Trigger Property="IsPressed" 
-								 Value="true">
+						<Trigger Property="IsPressed" Value="true">
 							<Trigger.EnterActions>
 								<BeginStoryboard>
 									<Storyboard>
@@ -312,7 +271,6 @@
 									TargetName="contentPresenter" 
 									Value="{StaticResource 
 									Button.Disabled.Foreground}"/>
-
 						</Trigger>
 
 						<MultiTrigger>

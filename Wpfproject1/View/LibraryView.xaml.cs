@@ -12,15 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
     /// <summary>
-    /// Interaction logic for shelf.xaml
+    /// Interaction logic for library.xaml
     /// </summary>
-    public partial class Shelf : UserControl
+    public partial class LibraryView : UserControl
     {
-        public Shelf()
+        public LibraryView()
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
-	<Style x:Key="BorderStyle1" TargetType="{x:Type Border}">
+	<Style x:Key="BorderStyle" TargetType="{x:Type Border}">
 		<Setter Property="CornerRadius" Value="12"/>
 		<Setter Property="Background" Value="{StaticResource myuserbrush}"/>
 		<Setter Property="BorderBrush" Value="Black"/>

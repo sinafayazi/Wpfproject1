@@ -13,7 +13,8 @@
 				<WindowChrome
                     GlassFrameThickness="0"
                     CornerRadius="15"
-                    CaptionHeight="35"/>
+                    CaptionHeight="35"
+					ResizeBorderThickness="5"/>
 			</Setter.Value>
 		</Setter>
 		<Setter Property="BorderBrush" 
@@ -36,34 +37,48 @@
 						</Grid.RowDefinitions>
 						<TextBlock 
 							VerticalAlignment="Center"
-                            Margin="5,0,0,0"
+                            Margin="5,10,5,5"
                             FontSize="14"
                             Foreground="{StaticResource 
 							Button.Static.Background}"
                             Text="{TemplateBinding Title}" />
-						<Button x:Name="close"
+
+						<ToggleButton x:Name="close"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="4"
                             Width="20"
 							Height="20"
-                            Margin="5"
+                            Margin="5,10,10,5"
                             Content="X"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
-							Style="{StaticResource ButtonStyle2}"/>
-						<Button x:Name="maximize"
+							/>
+						<ToggleButton x:Name="maximize"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="3"
                             Width="20"
 							Height="20"
-                            Margin="5"
-                            Content="#"
+                            Margin="5,10,5,5"
+							Content="#"
                             WindowChrome.IsHitTestVisibleInChrome="True" 
-							Style="{StaticResource ButtonStyle2}"/>
-						<Button x:Name="minimize"
+							/>
+						<ToggleButton x:Name="restore"
+							Style="{StaticResource WindowToggleButtonStyle}"
+                            Grid.Column="3"
+                            Width="20"
+							Height="20"
+                            Margin="5,10,5,5"
+                            Content="+"
+                            WindowChrome.IsHitTestVisibleInChrome="True" 
+									  Visibility="Collapsed"
+							/>
+						<ToggleButton x:Name="minimize"
+							Style="{StaticResource WindowToggleButtonStyle}"
                             Grid.Column="2"
                             Width="20"
 							Height="20"
-                            Margin="5"
+                            Margin="5,10,5,5"
                             Content="_"
-							Style="{StaticResource ButtonStyle2}"
+							
                             WindowChrome.IsHitTestVisibleInChrome="True" />
 						<Border
                             Grid.Row="1" Grid.ColumnSpan="10"
@@ -74,20 +89,52 @@
 						</Border>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger SourceName="minimize"
-								 Property="HasContent"  
-								 Value="true">
-							<Setter  Property="WindowState"
-									 Value="Normal"/>
+						<Trigger Property="WindowState" 
+								 Value="Minimized">
+							<Setter TargetName="minimize" 
+									Property="IsChecked" 
+									Value="false"/>
 						</Trigger>
 						<Trigger SourceName="minimize"
-								 Property="IsPressed"  
-								 Value="True">
+									Property="IsChecked" 
+									Value="true" >
 							<Setter  Property="WindowState"
 									 Value="Minimized"/>
 						</Trigger>
-						
+					
+						<Trigger SourceName="maximize"
+								 Property="IsChecked"  
+								 Value="true">
+							<Setter  Property="WindowState"
+									 Value="Maximized"/>
+							<Setter TargetName="maximize"
+									Property="Visibility"
+									 Value="Collapsed" />
+							<Setter TargetName="restore"
+									Property="IsChecked"
+									 Value="false" />
+							<Setter TargetName="restore"
+									Property="Visibility"
+									 Value="Visible" />
+						</Trigger>
+						<Trigger SourceName="restore"
+								 Property="IsChecked"  
+								 Value="true">
+							<Setter  Property="WindowState"
+									 Value="normal"/>
+							<Setter TargetName="maximize"
+									Property="Visibility"
+									 Value="Visible" />
+							<Setter TargetName="restore"
+									Property="Visibility"
+									 Value="Collapsed" />
+							<Setter TargetName="maximize"
+									Property="IsChecked"
+									 Value="false" />
+						</Trigger>
+					
 					</ControlTemplate.Triggers>
+
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

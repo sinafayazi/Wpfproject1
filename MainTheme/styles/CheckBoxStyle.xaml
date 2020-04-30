@@ -5,7 +5,7 @@
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
+	<Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
 		<Setter Property="FocusVisualStyle"
 				Value="{StaticResource FocusVisual}"/>
 		<Setter Property="Background" 
@@ -14,7 +14,7 @@
 				Value="{StaticResource RadioButton.Static.Border}"/>
 		<Setter 
 			Property="Foreground" 
-			Value="{DynamicResource {x:Static 
+			Value="{StaticResource {x:Static 
 				SystemColors.ControlTextBrushKey}}"/>
 		<Setter Property="BorderThickness" 
 				Value="1.5"/>

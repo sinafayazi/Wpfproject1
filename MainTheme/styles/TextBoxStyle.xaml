@@ -5,7 +5,7 @@
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="../brushes/solidandgradiant.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-	<Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+	<Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
 		<Setter Property='Margin'
             Value='30,10' />
 		<Setter Property='FontFamily'
@@ -37,7 +37,8 @@
 							BorderThickness="{TemplateBinding 
 							BorderThickness}"
 							Background="{StaticResource mytextboxbrush}"
-							Opacity="1" SnapsToDevicePixels="True">
+							Opacity="1" SnapsToDevicePixels="True"
+							>
 						<ScrollViewer x:Name="PART_ContentHost" 
 									  Focusable="True" 
 									  HorizontalScrollBarVisibility="Hidden"
@@ -66,11 +67,20 @@
 							<Setter Property="CaretBrush"
 									Value="#8cc846"/>
 						</Trigger>
+						<Trigger Property="Validation.HasError" Value="True">
+							<Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self} , Path=(Validation.Errors).CurrentItem.ErrorContent}"/>
+							<Setter Property="BorderBrush"
+									TargetName="border" 
+									Value="red"/>
+							<Setter Property="CaretBrush"
+									Value="red"/>
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
 		<Style.Triggers>
+			
 			<MultiTrigger>
 				<MultiTrigger.Conditions>
 					<Condition Property="IsInactiveSelectionHighlightEnabled"
@@ -80,7 +90,7 @@
 				</MultiTrigger.Conditions>
 				<Setter 
 					Property="SelectionBrush" 
-					Value="{DynamicResource 
+					Value="{StaticResource 
 					{x:Static 
 					SystemColors.InactiveSelectionHighlightBrushKey}}"/>
 			</MultiTrigger>
