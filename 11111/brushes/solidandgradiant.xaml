@@ -2,24 +2,6 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:MainTheme">
-	
-	<RadialGradientBrush x:Key="OuterShelfControllerBrush">
-		<GradientStop Color="#FF026937"
-                                                  Offset=".95" />
-		<GradientStop Color="#FF064523"
-                                                  Offset="0.9" />
-		<GradientStop Color="#FF45933D"
-                                                  Offset="0.8" />
-		<GradientStop Color="#FF084221"
-                                                  Offset=".85" />
-	</RadialGradientBrush>
-	<RadialGradientBrush x:Key="InerShelfControllerBrush" >
-		<GradientStop Color="#FF353535"
-                                                  Offset="0.4" />
-		<GradientStop Color="#FF080808"
-                                                  Offset="1" />
-
-	</RadialGradientBrush>
 	<LinearGradientBrush x:Key="mywindowbrush" 
 						 EndPoint="1,.5" 
 						 StartPoint="0,.5">

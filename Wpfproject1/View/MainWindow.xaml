@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpfproject1"
+		xmlns:Control="clr-namespace:MainTheme;assembly=MainTheme"
         mc:Ignorable="d"
 		x:Name="Main"
         Title="WpfProject1_SinaFayazi" 
@@ -19,6 +20,7 @@
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<local:LibraryView 
 			Grid.Column="0"/>
@@ -26,5 +28,6 @@
 			Grid.Column="1"/>
 		<local:BookView 
 			Grid.Column="2"/>
+		<Control:ShelfControl Grid.Column="3" Style="{StaticResource MyShelfControlStyle}"/>
 	</Grid>
 </Window>
