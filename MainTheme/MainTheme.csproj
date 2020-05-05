@@ -49,6 +49,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Styles\ShelfControlStyle.xaml.cs">
+      <DependentUpon>ShelfControlStyle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Styles\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>

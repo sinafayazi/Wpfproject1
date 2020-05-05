@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -46,29 +47,90 @@ namespace MainTheme
     /// </summary>
     public class ShelfControl : Control
     {
+        public static readonly DependencyProperty HorizontalProperty =
+            DependencyProperty.Register(
+            "X", typeof(double),
+             typeof(ShelfControl)
+        );
+        public static readonly DependencyProperty VerticalProperty =
+             DependencyProperty.Register(
+            "Y", typeof(double),
+            typeof(ShelfControl)
+        );
+
+
         static ShelfControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ShelfControl), new FrameworkPropertyMetadata(typeof(ShelfControl)));
         }
-
-    }
-    public class PercentageConverter : IValueConverter
-    {
-        public object Convert(object value,
-            Type targetType,
-            object parameter,
-            System.Globalization.CultureInfo culture)
+        public double X
         {
-            return System.Convert.ToDouble(value) *
-                   System.Convert.ToDouble(parameter);
+            get { return (double)GetValue(HorizontalProperty); }
+            set { SetValue(HorizontalProperty, value); }
         }
-
-        public object ConvertBack(object value,
-            Type targetType,
-            object parameter,
-            System.Globalization.CultureInfo culture)
+        public double Y
         {
-            throw new NotImplementedException();
+            get { return (double)GetValue(VerticalProperty); }
+            set { SetValue(VerticalProperty, value); }
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            fp_Move_Control(e);
+        }
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            
+            Grid thumb = (Grid)GetTemplateChild("dragable");
+            thumb.RenderTransform = new TranslateTransform(0, 0);
+
+        }
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            fp_Move_Control(e);
+        }
+        private void fp_Move_Control(MouseEventArgs e)
+        {
+            Grid thumb = (Grid)GetTemplateChild("dragable");
+            Viewbox tin = (Viewbox)GetTemplateChild("tin");
+            Ellipse path = (Ellipse)GetTemplateChild("Center");
+            TextBox ix = (TextBox)GetTemplateChild("X");
+            TextBox vay = (TextBox)GetTemplateChild("Y");
+            ix.Text = e.GetPosition(path).X.ToString();
+            vay.Text = (e.GetPosition(path).Y).ToString();
+            //----------------< fp_Move_Control() >----------------
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+
+
+                if (thumb != null)
+                {
+
+                    Point mousePoint = e.GetPosition(path);
+
+                    double posY = mousePoint.Y;
+                    double actHeight = path.ActualHeight;
+                    double posX = mousePoint.X;
+                    double actWidth = path.ActualWidth;
+                    double tan = posY / posX;
+
+                    if (    Math.Sqrt( Math.Pow (posX - (actHeight / 2), 2 ) + Math.Pow(posY-(actWidth/2) ,2))  < (actHeight/2)  -  tin.ActualHeight/2 )
+                    {
+                        thumb.RenderTransform = new TranslateTransform(posX - actHeight / 2, posY - actWidth / 2);
+                    }
+                    //else
+                    //{
+                    //    thumb.RenderTransform = new TranslateTransform(((actHeight / 2) - tin.ActualHeight / 2)/tan, ((actHeight / 2) - tin.ActualHeight / 2)*tan);
+
+                    //}
+
+                }
+            }
+            else
+            {
+                thumb.RenderTransform = new TranslateTransform(0, 0);
+            }
+
         }
     }
+
 }
