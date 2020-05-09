@@ -65,8 +65,15 @@ namespace MainTheme
         }
         public double X
         {
-            get { return (double)GetValue(HorizontalProperty); }
-            set { SetValue(HorizontalProperty, value); }
+            get
+            {
+                return (double)GetValue(HorizontalProperty);
+            }
+            set
+            {
+                SetValue(HorizontalProperty, value);
+
+            }
         }
         public double Y
         {
@@ -75,29 +82,31 @@ namespace MainTheme
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            fp_Move_Control(e);
+            ShelfControlMoveMethod(e);
         }
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
-            
+
             Grid thumb = (Grid)GetTemplateChild("dragable");
             thumb.RenderTransform = new TranslateTransform(0, 0);
+            X = 0;
+            Y = 0;
 
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            fp_Move_Control(e);
+            ShelfControlMoveMethod(e);
         }
-        private void fp_Move_Control(MouseEventArgs e)
+        private void ShelfControlMoveMethod(MouseEventArgs e)
         {
             Grid thumb = (Grid)GetTemplateChild("dragable");
             Viewbox tin = (Viewbox)GetTemplateChild("tin");
             Ellipse path = (Ellipse)GetTemplateChild("Center");
             TextBox ix = (TextBox)GetTemplateChild("X");
             TextBox vay = (TextBox)GetTemplateChild("Y");
-            ix.Text = e.GetPosition(path).X.ToString();
-            vay.Text = (e.GetPosition(path).Y).ToString();
-            //----------------< fp_Move_Control() >----------------
+            ix.Text = X.ToString(); // e.GetPosition(path).X.ToString();
+            vay.Text = Y.ToString(); //(e.GetPosition(path).Y).ToString();
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
 
@@ -111,15 +120,39 @@ namespace MainTheme
                     double actHeight = path.ActualHeight;
                     double posX = mousePoint.X;
                     double actWidth = path.ActualWidth;
-                    double tan = posY / posX;
+                    //double tan = posY / posX;
 
-                    if (    Math.Sqrt( Math.Pow (posX - (actHeight / 2), 2 ) + Math.Pow(posY-(actWidth/2) ,2))  < (actHeight/2)  -  tin.ActualHeight/2 )
+                    if (Math.Sqrt(Math.Pow(posX - (actHeight / 2), 2) + Math.Pow(posY - (actWidth / 2), 2)) <= (actHeight / 2) - tin.ActualHeight / 2)
                     {
-                        thumb.RenderTransform = new TranslateTransform(posX - actHeight / 2, posY - actWidth / 2);
+                        thumb.RenderTransform = new TranslateTransform(posX - actWidth / 2, posY - actHeight / 2);
+                        if (posX >= 4* actWidth / 6 )
+                        {
+                            X = 1;
+                        }
+                        else if (posX <= actWidth / 3)
+                        {
+                            X = -1;
+                        }
+                        else
+                        {
+                            X = 0;
+                        }
+                        if (posY  >= 4 * actHeight / 6)
+                        {
+                            Y = 1;
+                        }
+                        else if (posY  <= actHeight / 3)
+                        {
+                            Y = -1;
+                        }
+                        else
+                        {
+                            Y = 0;
+                        }
                     }
                     //else
                     //{
-                    //    thumb.RenderTransform = new TranslateTransform(((actHeight / 2) - tin.ActualHeight / 2)/tan, ((actHeight / 2) - tin.ActualHeight / 2)*tan);
+                    //    thumb.RenderTransform = new TranslateTransform(((actHeight / 2) - tin.ActualHeight / 2) / tan, ((actHeight / 2) - tin.ActualHeight / 2) * tan);
 
                     //}
 
@@ -128,6 +161,8 @@ namespace MainTheme
             else
             {
                 thumb.RenderTransform = new TranslateTransform(0, 0);
+                X = 0;
+                Y = 0;
             }
 
         }
