@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Microsoft.Xaml.Behaviors;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Wpfproject1
 {
@@ -76,12 +77,17 @@ namespace Wpfproject1
             bool wasFound = false;
             for (int i = 0; i < parentItem.Items.Count; i++)
             {
-                TreeViewItem itm = parentItem.ItemContainerGenerator.ContainerFromIndex(i) as TreeViewItem;
+                
+                    TreeViewItem itm = parentItem.ItemContainerGenerator.ContainerFromIndex(i) as TreeViewItem;
+               
                 var found = SelectItem(o, itm);
-                if (!found)
-                    itm.IsExpanded = false;
-                else
-                    wasFound = true;
+                if (itm != null)
+                {
+                    if (!found)
+                        itm.IsExpanded = false;
+                    else
+                        wasFound = true; 
+                }
             }
 
             return wasFound;
