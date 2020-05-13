@@ -13,6 +13,7 @@
 		<ResourceDictionary Source="styles/WindowStyle.xaml" />
 		<ResourceDictionary Source="styles/ShelfControlStyle.xaml" />
 		<ResourceDictionary Source="styles/TreeViewStyle.xaml" />
+		<ResourceDictionary Source="styles/UserControlStyle.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

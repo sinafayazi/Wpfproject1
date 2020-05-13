@@ -65,7 +65,6 @@
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Model\Content.cs" />
     <Compile Include="ViewModel\ContentViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\StorageManager.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />

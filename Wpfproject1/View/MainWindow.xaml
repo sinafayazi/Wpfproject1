@@ -15,6 +15,7 @@
 		Width="1000" 
 		MinHeight="280"
 		MinWidth="950"
+		
 		Style="{StaticResource WindowStyle1}" >
 	<Window.Resources>
 		<vm:ContentViewModel x:Key="ContentViewModel"/>
@@ -24,48 +25,49 @@
 		Background="{StaticResource mywindowbrush}" >
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="5*" />
 			
 
 		</Grid.ColumnDefinitions>
-		<TreeView x:Name="ContentV"  Grid.Column="0"
+		<Border Style="{StaticResource BorderStyle}" >
+			<TreeView x:Name="ContentV"  Grid.Column="0"
 				  Style="{StaticResource TreeViewStyle}" 
 				  ItemsSource="{Binding Content.Libs , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				  pr:BindableSelectedItemBehavior.TreeViewSelectedItem="{Binding Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 				   >
-			<!--<e:Interaction.Behaviors>
+				<!--<e:Interaction.Behaviors>
 				<pr:BindableSelectedItemBehavior SelectedItem="{Binding Lib , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 			</e:Interaction.Behaviors>-->
-			<TreeView.ItemTemplate>
+				<TreeView.ItemTemplate>
 
-				<HierarchicalDataTemplate ItemsSource="{Binding Shelves, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  >
+					<HierarchicalDataTemplate ItemsSource="{Binding Shelves, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  >
 
-					<TextBlock Foreground="Red" Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-					<HierarchicalDataTemplate.ItemTemplate>
+						<TextBlock Foreground="Red" Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+						<HierarchicalDataTemplate.ItemTemplate>
 
-						<HierarchicalDataTemplate ItemsSource="{Binding Books, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-							<TextBlock Text="{Binding Position, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-							<HierarchicalDataTemplate.ItemTemplate>
-								<DataTemplate>
-									<TextBlock Text="{Binding BookName,UpdateSourceTrigger=PropertyChanged}" />
-								</DataTemplate>
-							</HierarchicalDataTemplate.ItemTemplate>
-						</HierarchicalDataTemplate>
-					</HierarchicalDataTemplate.ItemTemplate>
+							<HierarchicalDataTemplate ItemsSource="{Binding Books, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+								<TextBlock Text="{Binding Position, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+								<HierarchicalDataTemplate.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding BookName,UpdateSourceTrigger=PropertyChanged}" />
+									</DataTemplate>
+								</HierarchicalDataTemplate.ItemTemplate>
+							</HierarchicalDataTemplate>
+						</HierarchicalDataTemplate.ItemTemplate>
 
-				</HierarchicalDataTemplate>
-			</TreeView.ItemTemplate>
-			<TreeView.ItemContainerStyle>
-				<Style TargetType="TreeViewItem">
-					<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+					</HierarchicalDataTemplate>
+				</TreeView.ItemTemplate>
+				<TreeView.ItemContainerStyle>
+					<Style TargetType="TreeViewItem">
+						<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
 
-				</Style>
-			</TreeView.ItemContainerStyle>
-			<!--<e:Interaction.Behaviors>
+					</Style>
+				</TreeView.ItemContainerStyle>
+				<!--<e:Interaction.Behaviors>
 					<behaviours:BindableSelectedItemBehavior SelectedItem="{Binding Shelf , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 				</e:Interaction.Behaviors>-->
 
-			<!--<TreeView x:Name="Content3" 
+				<!--<TreeView x:Name="Content3" 
 				  Style="{StaticResource TreeViewStyle}" 
 				  ItemsSource="{Binding Content.Shelf , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				   SelectedItemChanged="Content2_SelectedItemChanged">
@@ -76,7 +78,7 @@
 					</TreeView>
 				</TreeView>-->
 
-			<!--<TreeView.Resources>
+				<!--<TreeView.Resources>
 				
 					<HierarchicalDataTemplate DataType="{x:Type model:Library}" ItemsSource="{Binding Content.Libs}">
 						<TreeViewItem Header="{Binding TypeADescription}" />
@@ -91,15 +93,19 @@
 			</TreeView.Resources>-->
 
 
-		</TreeView>
+			</TreeView>
+		</Border>
 		<local:LibraryView DataContext="{Binding LibraryViewModel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"
-						   Visibility="{Binding LibVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						   Visibility="{Binding IsVisible,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						   Style="{StaticResource UserControlStyle}"
 			Grid.Column="1"/>
 		<local:ShelfView DataContext="{Binding ShelfViewModel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"
-						 Visibility="{Binding ShelfVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						 Visibility="{Binding IsVisible,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						 Style="{StaticResource UserControlStyle}"
 			Grid.Column="1"/>
 		<local:BookView DataContext="{Binding BookViewModel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"
-						Visibility="{Binding BookVisibility,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						Visibility="{Binding IsVisible,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+						Style="{StaticResource UserControlStyle}"
 			Grid.Column="1"/>
 
 		

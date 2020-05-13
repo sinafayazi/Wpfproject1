@@ -10,11 +10,24 @@ using System.IO;
 using Microsoft.Win32;
 using Wpfproject1.Command;
 using System.ComponentModel;
+using System.Windows;
 
 namespace Wpfproject1.ViewModel
 {
     public class ShelfViewModel : ViewModelBase
     {
+        private Visibility isVisible;
+
+        public Visibility IsVisible
+        {
+            get {
+                return isVisible; }
+            set { 
+                isVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Shelf shelf;
         public Shelf Shelf
         {

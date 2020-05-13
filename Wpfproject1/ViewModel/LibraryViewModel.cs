@@ -10,11 +10,26 @@ using Microsoft.Win32;
 using System.Xml.Serialization;
 using Wpfproject1.Command;
 using System.ComponentModel;
+using System.Windows;
 
 namespace Wpfproject1.ViewModel
 {
     public class LibraryViewModel : ViewModelBase
     {
+        private Visibility isVisible;
+
+        public Visibility IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged();
+            }
+        }
         private Library lib;
         public Library Lib
         {

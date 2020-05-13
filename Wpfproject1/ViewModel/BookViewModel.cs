@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Serialization;
 using Wpfproject1.Command;
 using Wpfproject1.Model;
@@ -14,6 +15,20 @@ namespace Wpfproject1.ViewModel
 {
     public class BookViewModel : ViewModelBase
     {
+        private Visibility isVisible;
+
+        public Visibility IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged();
+            }
+        }
         private Book book;
         public Book Book
         {

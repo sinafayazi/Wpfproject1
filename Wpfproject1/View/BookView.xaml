@@ -10,117 +10,118 @@
     xmlns:local="clr-namespace:Wpfproject1"
     mc:Ignorable="d" 
     d:DesignHeight="450"
-	d:DesignWidth="800">
-	<UserControl.Resources>
-		<vm:BookViewModel x:Key="BookViewModel"/>
-		
-		<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
-			<ObjectDataProvider.MethodParameters>
-				<x:Type Type="md:Languages" />
-			</ObjectDataProvider.MethodParameters>
-		</ObjectDataProvider>
-	</UserControl.Resources>
-	
-	<Border 
+	d:DesignWidth="800"  >
+    <UserControl.Resources>
+        <vm:BookViewModel x:Key="BookViewModel"/>
+
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="Language">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="md:Languages" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+       
+    </UserControl.Resources>
+
+    <Border 
 		Style="{StaticResource BorderStyle}"  >
-		<Grid   >
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="auto" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="{Binding ElementName=AuthorEmail,
+        <Grid   >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding ElementName=AuthorEmail,
 					Path=ActualWidth}" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="auto"/>
-			</Grid.RowDefinitions>
-			<Label Style="{StaticResource LabelStyle}"
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource LabelStyle}"
 				   HorizontalAlignment="Left"
 				   Name="BookLabel"
 				   Content="Book"
 				   Grid.Row="0" 
 				   Grid.Column="0"/>
-			<Label
+            <Label
 				
 				HorizontalAlignment="Left"
 				Content="Book Name"
 				Grid.Row="1" 
 				Grid.Column="0"
 				Style="{StaticResource LabelStyle}"  />
-			<Label
+            <Label
 				Content="Author"
 				HorizontalAlignment="Left"
 				Style="{StaticResource LabelStyle}" 
 				Grid.Row="2"
 				Grid.Column="0" />
-			<Label
+            <Label
 				Content="Category" 
 				HorizontalAlignment="Left"
 				Style="{StaticResource LabelStyle}" 
 				Grid.Row="3"
 				Grid.Column="0" />
-			<Label
+            <Label
 				Content="Publisher"
 				HorizontalAlignment="Left"
 				Style="{StaticResource LabelStyle}"
 				Grid.Row="4"
 				Grid.Column="0" />
-			<Label Content="Language"
+            <Label Content="Language"
 				   HorizontalAlignment="Left"
 				   Style="{StaticResource LabelStyle}"
 				   Grid.Row="5"  
 				   Grid.Column="0" />
-			<Label 
+            <Label 
 				Content="Genre"     
 				HorizontalAlignment="Left"
 				Style="{StaticResource LabelStyle}"
 				Grid.Row="6"     
 				Grid.Column="0" />
-			<Label
+            <Label
 				Name="AuthorEmail"
 				Content="Author Email"
 				HorizontalAlignment="Left"
 				Style="{StaticResource LabelStyle}" 
 				Grid.Row="7"
 				Grid.Column="0" />
-			<TextBox 
+            <TextBox 
 				Text="{Binding Book.BookName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="1" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
-			<TextBox 
+            <TextBox 
 				Text="{Binding Book.Author, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="2" 
 				Grid.Column="1" 	 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
-			<TextBox 
+            <TextBox 
 				Text="{Binding Book.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="3" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
-			<TextBox 
+            <TextBox 
 				Text="{Binding Book.Publisher, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				TextWrapping="NoWrap"  
 				Grid.Row="4" Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource ResourceKey=TextBoxStyle}" />
-			<ComboBox  
+            <ComboBox  
 				Grid.Row="5" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
@@ -128,24 +129,24 @@
 				ItemsSource="{Binding Source={StaticResource Language}}"
 				SelectedItem="{Binding Path=Book.Language,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				Style="{StaticResource ResourceKey=ComboBoxStyle}">
-				
-			</ComboBox>
 
-			<TextBox 
+            </ComboBox>
+
+            <TextBox 
 				TextWrapping="NoWrap"
 				Grid.Row="6" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"
 				Text="{Binding Book.Genre, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-			<TextBox 
+            <TextBox 
 				TextWrapping="NoWrap"
 				Grid.Row="7" 
 				Grid.Column="1" 
 				Grid.ColumnSpan="3" 
 				Style="{StaticResource TextBoxStyle}"
 				Text="{Binding Book.Email, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-			<Button 
+            <Button 
 				Content="Ok" 
 				Grid.Column="0" 
 				Grid.Row="10" 
@@ -155,7 +156,7 @@
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding SaveCommand}"
 				/>
-			<Button 
+            <Button 
 				Name="cancel" 
 				Content="Cancel"   
 				Grid.Column="2" 
@@ -165,6 +166,6 @@
 				Cursor="Hand"  
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding LoadCommand}"/>
-		</Grid>
-	</Border>
+        </Grid>
+    </Border>
 </UserControl>

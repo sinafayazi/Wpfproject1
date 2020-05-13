@@ -49,7 +49,7 @@ namespace Wpfproject1.ViewModel
             get { return libraryViewModel; }
             set { libraryViewModel = value;
                 OnPropertyChanged();
-                UpdateVisibility();
+                
             }
         }
         private ShelfViewModel shelfViewModel;
@@ -61,7 +61,7 @@ namespace Wpfproject1.ViewModel
             {
                 shelfViewModel = value;
                 OnPropertyChanged();
-                UpdateVisibility();
+                
             }
         }
         private BookViewModel bookViewModel;
@@ -73,7 +73,7 @@ namespace Wpfproject1.ViewModel
             {
                 bookViewModel = value;
                 OnPropertyChanged();
-                UpdateVisibility();
+                
             }
         }
 
@@ -117,45 +117,7 @@ namespace Wpfproject1.ViewModel
         //        OnPropertyChanged();
         //    }
         //}
-        private Visibility libVisibility;
-        public Visibility LibVisibility
-        {
-            get
-            {
-                return libVisibility;
-            }
-            set
-            {
-                libVisibility = value;
-                OnPropertyChanged();
-            }
-        }
-        private Visibility shelfVisibility;
-        public Visibility ShelfVisibility
-        {
-            get
-            {
-                return shelfVisibility;
-            }
-            set
-            {
-                shelfVisibility = value;
-                OnPropertyChanged();
-            }
-        }
-        private Visibility bookVisibility;
-        public Visibility BookVisibility
-        {
-            get
-            {
-                return bookVisibility;
-            }
-            set
-            {
-                bookVisibility = value;
-                OnPropertyChanged();
-            }
-        }
+       
         public ContentViewModel()
         {
             Content = new Content();
@@ -176,29 +138,26 @@ namespace Wpfproject1.ViewModel
         }
         public void UpdateVisibility()
         {
-            LibVisibility = Visibility.Collapsed;
-            ShelfVisibility = Visibility.Collapsed;
-            BookVisibility = Visibility.Collapsed;
+            LibraryViewModel.IsVisible = Visibility.Collapsed;
+            ShelfViewModel.IsVisible = Visibility.Collapsed;
+            BookViewModel.IsVisible = Visibility.Collapsed;
 
             if (model is Library)
             {
-                ShelfVisibility = Visibility.Collapsed;
-                BookVisibility = Visibility.Collapsed;
-                LibVisibility = Visibility.Visible;
+                
+                LibraryViewModel.IsVisible = Visibility.Visible;
                 LibraryViewModel.Lib = (Library)model;
             }
             else if (model is Shelf)
             {
-                LibVisibility = Visibility.Collapsed;
-                BookVisibility = Visibility.Collapsed;
-                ShelfVisibility = Visibility.Visible;
+
+                ShelfViewModel.IsVisible = Visibility.Visible;
                 ShelfViewModel.Shelf = (Shelf)model;
             }
             else if (model is Book)
             {
-                LibVisibility = Visibility.Collapsed;
-                ShelfVisibility = Visibility.Collapsed;
-                BookVisibility = Visibility.Visible;
+
+                BookViewModel.IsVisible = Visibility.Visible;
                 BookViewModel.Book = (Book)model;
             }
             
