@@ -16,49 +16,66 @@ namespace Wpfproject1
     {
         static bool IsFirst = true;
         public static string FliePath;
+        static Content ContentTemp;
         public static void Save(object instance)
         {
-            Library LibTemp = new Library();
+            
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "xml (*.xml)|*.xml"
             };
             if (saveFileDialog.ShowDialog() == true)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Library));
+               
+                XmlSerializer serializer = new XmlSerializer(typeof(Content));
 
-                LibTemp = (Library)Load(typeof(Library));
-                if (LibTemp.Shelves == null)
+                ContentTemp = (Content)Load(typeof(Content));
+                if (ContentTemp.Libs == null)
                 {
-                    LibTemp.Shelves = new ObservableCollection<Shelf>()
-                        { new Shelf()};
+                    ContentTemp.Libs = new ObservableCollection<Library>()
+                    { new Library()};
                 }
-                if (LibTemp.Shelves.Last().Books == null)
+                if (ContentTemp.Libs.Last().Shelves == null)
                 {
-                    LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
-                        { new Book() };
+                    ContentTemp.Libs.Last().Shelves = new ObservableCollection<Shelf>()
+            { new Shelf()
+            };
+                }
+                if (ContentTemp.Libs.Last().Shelves.Last().Books== null)
+                {
+                    ContentTemp.Libs.Last().Shelves.Last().Books = new ObservableCollection<Book>()
+            { new Book()
+            };
                 }
                 if (instance is Book)
                 {
 
-                    LibTemp.Shelves.Last().Books.Add((Book)instance);
+                    ContentTemp.Libs.Last().Shelves.Last().Books.Add((Book)instance);
                 }
                 else if (instance is Shelf)
                 {
-                    LibTemp.Shelves.Add((Shelf)instance);
+                    
+                    ContentTemp.Libs.Last().Shelves.Add((Shelf)instance);
+                }
+                else if(instance is Library)
+                {
+                   
+                    ContentTemp.Libs.Add((Library)instance);
                 }
                 else
                 {
-                    LibTemp = (Library)instance;
+                    ContentTemp = (Content)instance;
                 }
                 StreamWriter Writer = new StreamWriter(saveFileDialog.FileName);
-                serializer.Serialize(Writer, LibTemp);
+                FliePath = saveFileDialog.FileName;
+                serializer.Serialize(Writer, ContentTemp);
                 Writer.Close();
                 Writer.Dispose();
             }
         }
         public static object Load(Type type)
         {
+            Content ContentTemp = new Content();
             Library LibTemp = new Library();
             Book BookTemp = new Book();
             Shelf ShelfTemp = new Shelf();
@@ -71,35 +88,45 @@ namespace Wpfproject1
                 if (openFileDialog.ShowDialog() == true)
                 {
                     FliePath = openFileDialog.FileName;
-                    XmlSerializer serializer = new XmlSerializer(typeof(Library));
+                    XmlSerializer serializer = new XmlSerializer(typeof(Content));
                     FileStream reader = new FileStream(FliePath, FileMode.Open);
-                    LibTemp = (Library)serializer.Deserialize(reader);
+                    ContentTemp = (Content)serializer.Deserialize(reader);
                     reader.Close();
                     reader.Dispose();
                 }
                 else
                 {
-                    LibTemp.Shelves = new ObservableCollection<Shelf>()
+                    ContentTemp.Libs = new ObservableCollection<Library>()
+                {
+                    new Library()
+                };
+
+                    ContentTemp.Libs.Last().Shelves = new ObservableCollection<Shelf>()
                         { new Shelf() };
-                    LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
+                    ContentTemp.Libs.Last().Shelves.Last().Books = new ObservableCollection<Book>()
                         { new Book() };
                 }
                 IsFirst = false;
                 if (type == typeof(Book))
                 {
-                    BookTemp = (Book)LibTemp.Shelves.Last().Books.Last();
+                    BookTemp = (Book)ContentTemp.Libs.Last().Shelves.Last().Books.Last();
                     return BookTemp;
                 }
                 else if (type == typeof(Shelf))
                 {
-                    ShelfTemp = (Shelf)LibTemp.Shelves.Last();
+                    ShelfTemp = (Shelf)ContentTemp.Libs.Last().Shelves.Last();
                     return ShelfTemp;
                 }
-                return LibTemp;
+                else if (type == typeof(Library))
+                {
+                    LibTemp = ContentTemp.Libs.Last();
+                    return LibTemp;
+                }
+                return ContentTemp;
             }
             else
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Library));
+                XmlSerializer serializer = new XmlSerializer(typeof(Content));
                 if (FliePath == null)
                 {
                     if (type == typeof(Book))
@@ -112,35 +139,52 @@ namespace Wpfproject1
 
                         return ShelfTemp;
                     }
-                    return LibTemp;
+                    else if (type == typeof(Library))
+                    {
+                        
+                        return LibTemp;
+                    }
+                    return ContentTemp;
                 }
                 FileStream reader = new FileStream(FliePath, FileMode.Open);
-                LibTemp = (Library)serializer.Deserialize(reader);
+                ContentTemp = (Content)serializer.Deserialize(reader);
                 reader.Close();
                 reader.Dispose();
-                if (LibTemp.Shelves == null)
+                if (ContentTemp.Libs == null)
                 {
-                    LibTemp.Shelves = new ObservableCollection<Shelf>()
+
+                        ContentTemp.Libs = new ObservableCollection<Library>()
+                    { new Library()}; 
+                    
+                }
+                if (ContentTemp.Libs.Last().Shelves.Count == 0)
+                {
+                    ContentTemp.Libs.Last().Shelves = new ObservableCollection<Shelf>()
             { new Shelf()
             };
                 }
-                if (LibTemp.Shelves.Last().Books.Count == 0)
+                if (ContentTemp.Libs.Last().Shelves.Last().Books == null)
                 {
-                    LibTemp.Shelves.Last().Books = new ObservableCollection<Book>()
+                    ContentTemp.Libs.Last().Shelves.Last().Books = new ObservableCollection<Book>()
             { new Book()
             };
                 }
                 if (type == typeof(Book))
                 {
-                    BookTemp = (Book)LibTemp.Shelves.Last().Books.Last();
+                    BookTemp = (Book)ContentTemp.Libs.Last().Shelves.Last().Books.Last();
                     return BookTemp;
                 }
                 else if (type == typeof(Shelf))
                 {
-                    ShelfTemp = (Shelf)LibTemp.Shelves.Last();
+                    ShelfTemp = (Shelf)ContentTemp.Libs.Last().Shelves.Last();
                     return ShelfTemp;
                 }
-                return LibTemp;
+                else if (type == typeof(Library))
+                {
+                    LibTemp = ContentTemp.Libs.Last();
+                    return LibTemp;
+                }
+                return ContentTemp;
             }
         }
     }

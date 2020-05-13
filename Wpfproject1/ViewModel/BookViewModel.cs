@@ -68,5 +68,6 @@ namespace Wpfproject1.ViewModel
         {
             (SaveCommand as RelayCommand).RaiseCanExecuteChanged();
         }
+       
     }
 }

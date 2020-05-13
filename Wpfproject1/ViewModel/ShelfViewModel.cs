@@ -13,7 +13,7 @@ using System.ComponentModel;
 
 namespace Wpfproject1.ViewModel
 {
-    class ShelfViewModel : ViewModelBase
+    public class ShelfViewModel : ViewModelBase
     {
         private Shelf shelf;
         public Shelf Shelf

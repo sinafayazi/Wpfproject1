@@ -12,6 +12,7 @@
 		<ResourceDictionary Source="brushes/solidandgradiant.xaml" />
 		<ResourceDictionary Source="styles/WindowStyle.xaml" />
 		<ResourceDictionary Source="styles/ShelfControlStyle.xaml" />
+		<ResourceDictionary Source="styles/TreeViewStyle.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

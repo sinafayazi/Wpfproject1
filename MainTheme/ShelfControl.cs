@@ -104,8 +104,8 @@ namespace MainTheme
             Ellipse path = (Ellipse)GetTemplateChild("Center");
             TextBox ix = (TextBox)GetTemplateChild("X");
             TextBox vay = (TextBox)GetTemplateChild("Y");
-            ix.Text = X.ToString(); // e.GetPosition(path).X.ToString();
-            vay.Text = Y.ToString(); //(e.GetPosition(path).Y).ToString();
+            //ix.Text = X.ToString(); // e.GetPosition(path).X.ToString();
+            //vay.Text = Y.ToString(); //(e.GetPosition(path).Y).ToString();
 
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -120,41 +120,31 @@ namespace MainTheme
                     double actHeight = path.ActualHeight;
                     double posX = mousePoint.X;
                     double actWidth = path.ActualWidth;
-                    //double tan = posY / posX;
-
-                    if (Math.Sqrt(Math.Pow(posX - (actHeight / 2), 2) + Math.Pow(posY - (actWidth / 2), 2)) <= (actHeight / 2) - tin.ActualHeight / 2)
+                    double R = (actHeight / 2) - tin.ActualWidth / 2;
+                    double distance = Math.Sqrt(Math.Pow(posX - (actHeight / 2), 2) + Math.Pow(posY - (actWidth / 2), 2) );
+                    double sin = (posY - actHeight / 2) / distance;
+                    double cos = (posX - actWidth / 2) / distance;
+                    if (Math.Sqrt(Math.Pow(posX - (actHeight / 2), 2) + Math.Pow(posY - (actWidth / 2), 2)) <= R)
                     {
                         thumb.RenderTransform = new TranslateTransform(posX - actWidth / 2, posY - actHeight / 2);
-                        if (posX >= 4* actWidth / 6 )
-                        {
-                            X = 1;
-                        }
-                        else if (posX <= actWidth / 3)
-                        {
-                            X = -1;
-                        }
-                        else
-                        {
-                            X = 0;
-                        }
-                        if (posY  >= 4 * actHeight / 6)
-                        {
-                            Y = 1;
-                        }
-                        else if (posY  <= actHeight / 3)
-                        {
-                            Y = -1;
-                        }
-                        else
-                        {
-                            Y = 0;
-                        }
-                    }
-                    //else
-                    //{
-                    //    thumb.RenderTransform = new TranslateTransform(((actHeight / 2) - tin.ActualHeight / 2) / tan, ((actHeight / 2) - tin.ActualHeight / 2) * tan);
+                        X = posX >= 5 * actWidth / 9 ||
+                            posX <= 4 * actWidth / 9 ?
+                            (posX - actWidth / 2) / R : 0;
+                        Y = posY >= 5 * actHeight / 9 ||
+                            posY <= 4 * actHeight / 9 ?
+                            -1*(posY - actHeight / 2) / R : 0;
 
-                    //}
+                    }
+                    else
+                    {
+                        thumb.RenderTransform = new TranslateTransform(cos * R, sin * R);
+                        X = cos ;
+                        Y = -1*sin ;
+
+
+
+
+                    }
 
                 }
             }

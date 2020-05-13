@@ -5,15 +5,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:vm="clr-namespace:Wpfproject1.ViewModel"
-    xmlns:local="clr-namespace:Wpfproject1"
-    mc:Ignorable="d" 
+    xmlns:local="clr-namespace:Wpfproject1" xmlns:Control="clr-namespace:MainTheme;assembly=MainTheme"
+	mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
-	<UserControl.Resources>
-		<vm:ShelfViewModel x:Key="ShelfViewModel"/>
-	</UserControl.Resources>
+	
 	<Border   
 		Style="{StaticResource BorderStyle}" >
-		<Grid  DataContext="{Binding Source={StaticResource ShelfViewModel}}">
+		<Grid >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
@@ -26,10 +24,10 @@
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
+			
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
-				<RowDefinition Height="auto"/>
+				
 				<RowDefinition Height="*"/>
 				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
@@ -94,6 +92,7 @@
 				Cursor="Hand"  
 				Maximum="100" 
 				Style="{StaticResource SliderStyle}"   />
+			
 			<Button 
 				Content="Ok" 
 				Grid.Column="0" 

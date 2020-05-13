@@ -11,13 +11,11 @@
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800"
 			 >
-	<UserControl.Resources>
-		<vm:LibraryViewModel x:Key="LibraryViewModel"/>
-	</UserControl.Resources>
+	
 
 	<Border  
 		Style="{StaticResource BorderStyle}" >
-		<Grid DataContext="{Binding Source={StaticResource LibraryViewModel}}">
+		<Grid >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />

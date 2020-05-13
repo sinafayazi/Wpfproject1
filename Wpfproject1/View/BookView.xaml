@@ -23,7 +23,7 @@
 	
 	<Border 
 		Style="{StaticResource BorderStyle}"  >
-		<Grid DataContext="{Binding Source={StaticResource BookViewModel}}"  >
+		<Grid   >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition Width="*" />
@@ -127,7 +127,7 @@
 				Cursor="Hand"  
 				ItemsSource="{Binding Source={StaticResource Language}}"
 				SelectedItem="{Binding Path=Book.Language,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				Style="{StaticResource ComboBoxStyle}">
+				Style="{StaticResource ResourceKey=ComboBoxStyle}">
 				
 			</ComboBox>
 
