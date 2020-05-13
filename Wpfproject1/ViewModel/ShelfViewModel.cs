@@ -63,6 +63,7 @@ namespace Wpfproject1.ViewModel
         public void SaveMethod()
         {
             StorageManager.Save(Shelf);
+            OnPropertyChanged("Libs");
         }
         private bool CanLoad(object parameter)
         {

@@ -97,14 +97,15 @@ namespace Wpfproject1
                 else
                 {
                     ContentTemp.Libs = new ObservableCollection<Library>()
-                {
-                    new Library()
+                    {
+                        new Library() { Name = "First" }
+
                 };
 
                     ContentTemp.Libs.Last().Shelves = new ObservableCollection<Shelf>()
-                        { new Shelf() };
+                        { new Shelf(){ Position = "First" }};
                     ContentTemp.Libs.Last().Shelves.Last().Books = new ObservableCollection<Book>()
-                        { new Book() };
+                        { new Book() { BookName = "First" } };
                 }
                 IsFirst = false;
                 if (type == typeof(Book))

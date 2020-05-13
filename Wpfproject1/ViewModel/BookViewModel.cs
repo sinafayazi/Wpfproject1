@@ -65,6 +65,7 @@ namespace Wpfproject1.ViewModel
         public void SaveMethod()
         {
             StorageManager.Save(Book);
+            OnPropertyChanged("Libs");
         }
         private bool CanLoad(object parameter)
         {
