@@ -17,6 +17,21 @@ namespace Wpfproject1.Model
     }
     public class Book : ModelBase, IDataErrorInfo
     {
+        public int Index
+        {
+            get;
+             set;
+        }
+        public int ParentIndex
+        {
+            get;
+            set;
+        }
+        public int LibIndex
+        {
+            get;
+            set;
+        }
         private string bookName;
         public string BookName
         {

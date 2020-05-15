@@ -75,7 +75,7 @@ namespace Wpfproject1.ViewModel
         }
         public void LoadMetod()
         {
-            Shelf = (Shelf)StorageManager.Load(typeof(Shelf));
+            Shelf = (Shelf)StorageManager.Load(Shelf);
             Shelf.PropertyChanged += Model_PropertyChanged;
         }
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)

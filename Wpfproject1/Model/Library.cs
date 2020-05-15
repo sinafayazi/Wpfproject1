@@ -12,6 +12,12 @@ namespace Wpfproject1.Model
 {
     public class Library : ModelBase, IDataErrorInfo
     {
+        public int Index
+        {
+            get;
+             set;
+        }
+
         private string name;
         public string Name
         {

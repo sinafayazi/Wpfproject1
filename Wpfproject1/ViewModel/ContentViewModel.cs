@@ -11,202 +11,182 @@ using Wpfproject1.Model;
 namespace Wpfproject1.ViewModel
 {
 
-    public class ContentViewModel : ViewModelBase
-    {
-        private Content content;
+	public class ContentViewModel : ViewModelBase
+	{
+		private Content content;
 
-        public Content Content
-        {
-            get
-            {
-                return content;
-            }
-            set
-            {
-                content = value;
-                OnPropertyChanged();
-            }
-        }
-        private static ModelBase  model;
+		public Content Content
+		{
+			get
+			{
+				return content;
+			}
+			set
+			{
+				content = value;
+				OnPropertyChanged();
+			}
+		}
+		private static ModelBase model;
 
-        public ModelBase Model
-        {
-            get
-            {
-                return model;
-            }
-            set
-            {
-                model = value;
-                OnPropertyChanged();
-                UpdateVisibility();
-            }
-        }
-        private LibraryViewModel libraryViewModel;
+		public ModelBase Model
+		{
+			get
+			{
+				return model;
+			}
+			set
+			{
+				model = value;
+				OnPropertyChanged();
+				UpdateVisibility();
+				model.PropertyChanged += Lib_PropertyChanged;
+			}
+		}
+		private LibraryViewModel libraryViewModel;
 
-        public LibraryViewModel LibraryViewModel
-        {
-            get { return libraryViewModel; }
-            set { libraryViewModel = value;
-                OnPropertyChanged();
-                
-            }
-        }
-        private ShelfViewModel shelfViewModel;
+		public LibraryViewModel LibraryViewModel
+		{
+			get
+			{
+				return libraryViewModel;
+			}
+			set
+			{
+				libraryViewModel = value;
+				OnPropertyChanged();
 
-        public ShelfViewModel ShelfViewModel
-        {
-            get { return shelfViewModel; }
-            set
-            {
-                shelfViewModel = value;
-                OnPropertyChanged();
-                
-            }
-        }
-        private BookViewModel bookViewModel;
+			}
+		}
+		private ShelfViewModel shelfViewModel;
 
-        public BookViewModel BookViewModel
-        {
-            get { return bookViewModel; }
-            set
-            {
-                bookViewModel = value;
-                OnPropertyChanged();
-                
-            }
-        }
+		public ShelfViewModel ShelfViewModel
+		{
+			get
+			{
+				return shelfViewModel;
+			}
+			set
+			{
+				shelfViewModel = value;
+				OnPropertyChanged();
 
-        //private Library lib;
-        //public Library Lib
-        //{
-        //    get
-        //    {
-        //        return lib;
-        //    }
-        //    set
-        //    {
-        //        lib = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-        //private Shelf shelf;
-        //public Shelf Shelf
-        //{
-        //    get
-        //    {
-        //        return shelf;
-        //    }
-        //    set
-        //    {
-        //        shelf = value;
-        //        OnPropertyChanged();
-        //    }
+			}
+		}
+		private BookViewModel bookViewModel;
 
-        //}
-        //private Book book;
-        //public Book Book
-        //{
-        //    get
-        //    {
-        //        return book;
-        //    }
-        //    set
-        //    {
-        //        book = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-       
-        public ContentViewModel()
-        {
-            Content = new Content();
-            LibraryViewModel = new LibraryViewModel();
-            ShelfViewModel = new ShelfViewModel();
-            BookViewModel = new BookViewModel();
+		public BookViewModel BookViewModel
+		{
+			get
+			{
+				return bookViewModel;
+			}
+			set
+			{
+				bookViewModel = value;
+				OnPropertyChanged();
 
-            LoadMetod();
+			}
+		}
 
-        }
-        public void LoadMetod()
-        {
-            Content = (Content)StorageManager.Load(typeof(Content));
-            //Lib = Content.Libs.Last();
-            //Shelf = Content.Libs.Last().Shelves.Last();
-            //Book = Content.Libs.Last().Shelves.Last().Books.Last();
+		//private Library lib;
+		//public Library Lib
+		//{
+		//    get
+		//    {
+		//        return lib;
+		//    }
+		//    set
+		//    {
+		//        lib = value;
+		//        OnPropertyChanged();
+		//    }
+		//}
+		//private Shelf shelf;
+		//public Shelf Shelf
+		//{
+		//    get
+		//    {
+		//        return shelf;
+		//    }
+		//    set
+		//    {
+		//        shelf = value;
+		//        OnPropertyChanged();
+		//    }
 
-        }
-        public void UpdateVisibility()
-        {
-            LibraryViewModel.IsVisible = Visibility.Collapsed;
-            ShelfViewModel.IsVisible = Visibility.Collapsed;
-            BookViewModel.IsVisible = Visibility.Collapsed;
+		//}
+		//private Book book;
+		//public Book Book
+		//{
+		//    get
+		//    {
+		//        return book;
+		//    }
+		//    set
+		//    {
+		//        book = value;
+		//        OnPropertyChanged();
+		//    }
+		//}
 
-            if (model is Library)
-            {
-                
-                LibraryViewModel.IsVisible = Visibility.Visible;
-                LibraryViewModel.Lib = (Library)model;
-            }
-            else if (model is Shelf)
-            {
+		public ContentViewModel()
+		{
+			Content = new Content();
+			LibraryViewModel = new LibraryViewModel();
+			ShelfViewModel = new ShelfViewModel();
+			BookViewModel = new BookViewModel();
+			LoadMetod();
+		}
+		public void LoadMetod()
+		{
+			Content = (Content)StorageManager.Load(Content);
+			//Model.PropertyChanged += Lib_PropertyChanged;
+			
+			//LibraryViewModel.Lib = Content.Libs.Last();
+			//ShelfViewModel.Shelf = Content.Libs.Last().Shelves.Last();
+			//BookViewModel.Book = Content.Libs.Last().Shelves.Last().Books.Last();
 
-                ShelfViewModel.IsVisible = Visibility.Visible;
-                ShelfViewModel.Shelf = (Shelf)model;
-            }
-            else if (model is Book)
-            {
+		}
 
-                BookViewModel.IsVisible = Visibility.Visible;
-                BookViewModel.Book = (Book)model;
-            }
-            
+		private void Lib_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			(LibraryViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+			(ShelfViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+			(BookViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+			
+		}
 
-        }
-        public ModelBase DataUpdate(Type type)
-        {
-            if (model != null)
-            {
-                if (type == typeof(Book))
-                {
+		public void UpdateVisibility()
+		{
+			LibraryViewModel.IsVisible = Visibility.Collapsed;
+			ShelfViewModel.IsVisible = Visibility.Collapsed;
+			BookViewModel.IsVisible = Visibility.Collapsed;
 
-                    return (Book)model;
-                }
-                else if (type == typeof(Shelf))
-                {
+			if (model is Library)
+			{
 
-                    return (Shelf)model;
-                }
-                else if (type == typeof(Library))
-                {
+				LibraryViewModel.IsVisible = Visibility.Visible;
+				LibraryViewModel.Lib = (Library)model;
+			}
+			else if (model is Shelf)
+			{
 
-                    return (Library)model;
-                }
-                return (Content)model;
-            }
-            else
-            {
-                Content = (Content)StorageManager.Load(typeof(Content));
+				ShelfViewModel.IsVisible = Visibility.Visible;
+				ShelfViewModel.Shelf = (Shelf)model;
+				
+			}
+			else if (model is Book)
+			{
 
-                if (type == typeof(Book))
-                {
+				BookViewModel.IsVisible = Visibility.Visible;
+				BookViewModel.Book = (Book)model;
+			}
 
-                    return Content.Libs.Last().Shelves.Last().Books.Last();
-                }
-                else if (type == typeof(Shelf))
-                {
 
-                    return Content.Libs.Last().Shelves.Last();
-                }
-                else if (type == typeof(Library))
-                {
+		}
+		
 
-                    return Content.Libs.Last();
-                }
-                return Content;
-            }
-        }
-
-    }
+	}
 
 }

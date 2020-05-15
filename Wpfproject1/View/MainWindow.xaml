@@ -63,36 +63,6 @@
 
 					</Style>
 				</TreeView.ItemContainerStyle>
-				<!--<e:Interaction.Behaviors>
-					<behaviours:BindableSelectedItemBehavior SelectedItem="{Binding Shelf , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-				</e:Interaction.Behaviors>-->
-
-				<!--<TreeView x:Name="Content3" 
-				  Style="{StaticResource TreeViewStyle}" 
-				  ItemsSource="{Binding Content.Shelf , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				   SelectedItemChanged="Content2_SelectedItemChanged">
-					<TreeView x:Name="Content4" 
-				  Style="{StaticResource TreeViewStyle}" 
-				  ItemsSource="{Binding Content.Book , Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				   SelectedItemChanged="Content2_SelectedItemChanged">
-					</TreeView>
-				</TreeView>-->
-
-				<!--<TreeView.Resources>
-				
-					<HierarchicalDataTemplate DataType="{x:Type model:Library}" ItemsSource="{Binding Content.Libs}">
-						<TreeViewItem Header="{Binding TypeADescription}" />
-					</HierarchicalDataTemplate>
-					<HierarchicalDataTemplate DataType="{x:Type model:Shelf}" ItemsSource="{Binding Lib.Shelves}">
-						<TreeViewItem Header="{Binding TypeBDescription" />
-					</HierarchicalDataTemplate>
-					<HierarchicalDataTemplate DataType="{x:Type model:Book}" ItemsSource="{Binding Shelf.Books}">
-						<TreeViewItem Header="{Binding TypeC}" />
-					</HierarchicalDataTemplate>
-				
-			</TreeView.Resources>-->
-
-
 			</TreeView>
 		</Border>
 		<local:LibraryView DataContext="{Binding LibraryViewModel, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"
@@ -111,40 +81,7 @@
 		
 
 
-		<!--<Grid Grid.Column="3">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="*"/>
-					<RowDefinition Height="6*"/>
-					<RowDefinition Height="auto" />
-					<RowDefinition Height="auto"/>
-				</Grid.RowDefinitions>
-				<Control:ShelfControl x:Name="Controler"
-				Grid.Row="1"
-				
-				 Style="{StaticResource MyShelfControlStyle}" 
-
-				/>
-				<TextBox x:Name="X" 
-						 Grid.Row="2"
-					 Width="{Binding ElementName=BookCount,
-					Path=ActualWidth}" 
-					 Text="{Binding X,ElementName=Controler}"
-					 Style="{StaticResource TextBoxStyle}"
-					 IsReadOnly="True"
-					 Margin="20"
-					  
-					/>
-				<TextBox x:Name="Y"
-						 Grid.Row="3"
-					 Width="{Binding ElementName=BookCount,
-					Path=ActualWidth}" 
-					 Text="{Binding Y,ElementName=Controler}"
-					 Style="{StaticResource TextBoxStyle}"
-					 IsReadOnly="True" 
-					Margin="20"
-					 
-					 />
-			</Grid>-->
+	
 		
 	</Grid>
 </Window>

@@ -77,7 +77,7 @@ namespace Wpfproject1.ViewModel
         }
         public void LoadMetod()
         {
-            Book = (Book)StorageManager.Load(typeof(Book));
+            Book = (Book)StorageManager.Load(Book);
             Book.PropertyChanged += Model_PropertyChanged;
         }
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)

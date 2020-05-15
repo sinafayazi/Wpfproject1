@@ -12,6 +12,16 @@ namespace Wpfproject1.Model
 {
     public class Shelf : ModelBase, IDataErrorInfo
     {
+        public int Index
+        {
+            get;
+            set;
+        }
+        public int ParentIndex
+        {
+            get;
+            set;
+        }
         private int count;
         public string Count
         {
