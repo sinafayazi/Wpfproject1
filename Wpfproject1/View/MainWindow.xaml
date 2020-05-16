@@ -14,8 +14,8 @@
 	Title="WpfProject1_SinaFayazi"
 	Height="500"
 	Width="1000"
-	MinHeight="280"
-	MinWidth="950"
+	MinHeight="600"
+	MinWidth="600"
 	Style="{StaticResource WindowStyle1}">
 	<Window.Resources>
 		<vm:ContentViewModel
@@ -27,11 +27,9 @@
 		Background="{StaticResource mywindowbrush}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition
-				Width="2*" />
+				Width="1*" />
 			<ColumnDefinition
-				Width="5*" />
-			<ColumnDefinition
-				Width="2*" />
+				Width="3*" />
 		</Grid.ColumnDefinitions>
 		<Border
 			Style="{StaticResource BorderStyle}">
@@ -89,58 +87,5 @@
 			Visibility="{Binding IsVisible,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
 			Style="{StaticResource UserControlStyle}"
 			Grid.Column="1" />
-		<Border
-			Style="{StaticResource BorderStyle}"
-			Grid.Column="2">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="*" />
-					<RowDefinition
-						Height="auto" />
-					<RowDefinition
-						Height="auto" />
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition
-						Width="auto" />
-					<ColumnDefinition
-						Width="*" />
-				</Grid.ColumnDefinitions>
-				<Control:ShelfControl
-					x:Name="Control"
-					Grid.Row="1"
-					Grid.ColumnSpan="2"
-					Grid.Column="0"
-					Style="{DynamicResource MyShelfControlStyle}"
-					Margin="20,0,20,0" />
-				<Label
-					x:Name="X"
-					Content="X"
-					Style="{StaticResource LabelStyle}"
-					Grid.Row="2"
-					Grid.Column="0" />
-				<Label
-					x:Name="Y"
-					Content="Y"
-					Style="{StaticResource LabelStyle}"
-					Grid.Row="3"
-					Grid.Column="0" />
-				<TextBox
-					Text="{Binding ElementName=Control, Path=X}"
-					Grid.Row="2"
-					Grid.Column="1"
-					Style="{StaticResource TextBoxStyle}"
-					IsReadOnly="True" />
-				<TextBox
-					Text="{Binding ElementName=Control, Path=Y}"
-					Grid.Row="3"
-					Grid.Column="1"
-					Style="{StaticResource TextBoxStyle}" 
-					IsReadOnly="True"/>
-			</Grid>
-		</Border>
 	</Grid>
 </Window>

@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Wpfproject1.Model
 {
-    public class Content : ModelBase
-    {
-        private ObservableCollection<Library> libs;
-        public ObservableCollection<Library> Libs
-        {
-            get
-            {
-                return libs;
-            }
-            set
-            {
-                libs = value;
-                OnPropertyChanged();
-            }
-        }
-        
-    }
+	public class Content : ModelBase
+	{
+		private ObservableCollection<Library> libs;
+		public ObservableCollection<Library> Libs
+		{
+			get
+			{
+				return libs;
+			}
+			set
+			{
+				libs = value;
+				OnPropertyChanged();
+			}
+		}
+
+	}
 
 }
 

@@ -14,74 +14,77 @@ using System.Windows;
 
 namespace Wpfproject1.ViewModel
 {
-    public class ShelfViewModel : ViewModelBase
-    {
-        private Visibility isVisible;
+	public class ShelfViewModel : ViewModelBase
+	{
+		private Visibility isVisible;
 
-        public Visibility IsVisible
-        {
-            get {
-                return isVisible; }
-            set { 
-                isVisible = value;
-                OnPropertyChanged();
-            }
-        }
+		public Visibility IsVisible
+		{
+			get
+			{
+				return isVisible;
+			}
+			set
+			{
+				isVisible = value;
+				OnPropertyChanged();
+			}
+		}
 
-        private Shelf shelf;
-        public Shelf Shelf
-        {
-            get
-            {
-                return shelf;
-            }
-            set
-            {
-                shelf = value;
-                OnPropertyChanged();
-            }
+		private Shelf shelf;
+		public Shelf Shelf
+		{
+			get
+			{
+				return shelf;
+			}
+			set
+			{
+				shelf = value;
+				OnPropertyChanged();
+			}
 
-        }
-        public ShelfViewModel()
-        {
-            Shelf = new Shelf();
-            LoadMetod();
-            SaveCommand = new RelayCommand(SaveAction, CanSave);
-            LoadCommand = new RelayCommand(LoadAction, CanLoad);
-        }
-        private bool CanSave(object parameter)
-        {
-            return string.IsNullOrEmpty(Shelf["Count"])
-                && string.IsNullOrEmpty(Shelf["Level"])
-                && string.IsNullOrEmpty(Shelf["Position"])
-                && string.IsNullOrEmpty(Shelf["Floor"]);
-        }
-        private void SaveAction(object parameter)
-        {
-            SaveMethod();
-        }
-        public void SaveMethod()
-        {
-            StorageManager.Save(Shelf);
-            OnPropertyChanged("Libs");
-        }
-        private bool CanLoad(object parameter)
-        {
-            return true;
-        }
-        private void LoadAction(object parameter)
-        {
-            LoadMetod();
-        }
-        public void LoadMetod()
-        {
-            Shelf = (Shelf)StorageManager.Load(Shelf);
-            Shelf.PropertyChanged += Model_PropertyChanged;
-        }
-        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            (SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-        }
+		}
+		public ShelfViewModel()
+		{
+			Shelf = new Shelf();
+			LoadMetod();
+			SaveCommand = new RelayCommand(SaveAction, CanSave);
+			LoadCommand = new RelayCommand(LoadAction, CanLoad);
+		}
+		private bool CanSave(object parameter)
+		{
+			return string.IsNullOrEmpty(Shelf["Count"])
+				&& string.IsNullOrEmpty(Shelf["Level"])
+				&& string.IsNullOrEmpty(Shelf["Position"])
+				&& string.IsNullOrEmpty(Shelf["Floor"]);
+		}
+		private void SaveAction(object parameter)
+		{
+			SaveMethod();
+		}
+		public void SaveMethod()
+		{
+			StorageManager.Save(Shelf);
+			OnPropertyChanged("Libs");
+		}
+		private bool CanLoad(object parameter)
+		{
+			return true;
+		}
+		private void LoadAction(object parameter)
+		{
+			LoadMetod();
+		}
+		public void LoadMetod()
+		{
+			Shelf = (Shelf)StorageManager.Load(Shelf);
+			Shelf.PropertyChanged += Model_PropertyChanged;
+		}
+		private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			(SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+		}
 
-    }
+	}
 }

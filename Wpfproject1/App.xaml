@@ -1,15 +1,15 @@
-﻿<Application x:Class="Wpfproject1.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Wpfproject1"
-             StartupUri="View/MainWindow.xaml">
+﻿<Application
+	x:Class="Wpfproject1.App"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Wpfproject1"
+	StartupUri="View/MainWindow.xaml">
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary 
-					Source="pack://application:,,,/MainTheme;component/StylesDictionary.xaml"/>
+				<ResourceDictionary
+					Source="pack://application:,,,/MainTheme;component/StylesDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-           
-        </ResourceDictionary>
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>

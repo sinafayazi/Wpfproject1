@@ -19,31 +19,24 @@ namespace Wpfproject1
 		static Content ContentTemp;
 		public static void Save(ModelBase instance)
 		{
-
 			SaveFileDialog saveFileDialog = new SaveFileDialog
 			{
 				Filter = "xml (*.xml)|*.xml"
 			};
 			if (saveFileDialog.ShowDialog() == true)
 			{
-
 				XmlSerializer serializer = new XmlSerializer(typeof(Content));
-
 				ContentTemp = (Content)Load(ContentTemp);
-
 				if (instance is Book)
 				{
-
 					ContentTemp.Libs[(instance as Book).LibIndex].Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index] = ((Book)instance);
 				}
 				else if (instance is Shelf)
 				{
-
 					ContentTemp.Libs[(instance as Shelf).ParentIndex].Shelves[(instance as Shelf).Index] = ((Shelf)instance);
 				}
 				else if (instance is Library)
 				{
-
 					ContentTemp.Libs[(instance as Library).Index] = ((Library)instance);
 				}
 				else
@@ -85,17 +78,12 @@ namespace Wpfproject1
 						{
 							new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
 							new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
-
 						} },
 						new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
 						{
 							new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
 							new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
-
 						} },
-
-
-
 						}
 					},
 						new Library() {Index = 1, Name = "Second" ,Shelves =new ObservableCollection<Shelf>()
@@ -104,47 +92,35 @@ namespace Wpfproject1
 						{
 							new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
 							new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
-
 						}
-
 						},
-
-
 						new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
 						{
 							new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
 							new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
-
 						}},
-
-
-
 						} },
-
-
 				};
 				}
 				IsFirst = false;
 				if (instance is Book)
 				{
-
-					return ContentTemp.Libs[(instance as Book).LibIndex].Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index] ;
+					return ContentTemp.Libs[(instance as Book).LibIndex].
+						Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
 				}
 				else if (instance is Shelf)
 				{
-
-					return ContentTemp.Libs[(instance as Shelf).ParentIndex].Shelves[(instance as Shelf).Index] ;
+					return ContentTemp.Libs[(instance as Shelf).ParentIndex].
+						Shelves[(instance as Shelf).Index];
 				}
 				else if (instance is Library)
 				{
-
-					return ContentTemp.Libs[(instance as Library).Index] ;
+					return ContentTemp.Libs[(instance as Library).Index];
 				}
 				else
 				{
 					return ContentTemp;
 				}
-				
 			}
 			else
 			{
@@ -159,17 +135,12 @@ namespace Wpfproject1
 						{
 							new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
 							new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
-
 						} },
 						new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
 						{
 							new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
 							new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
-
 						} },
-
-
-
 						}
 					},
 						new Library() {Index = 1, Name = "Second" ,Shelves =new ObservableCollection<Shelf>()
@@ -178,39 +149,28 @@ namespace Wpfproject1
 						{
 							new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
 							new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
-
 						}
-
 						},
-
-
 						new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
 						{
 							new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
 							new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
-
 						}},
-
-
-
 						} },
-
-
 				};
 
 					if (instance is Book)
 					{
-
-						return ContentTemp.Libs[(instance as Book).LibIndex].Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
+						return ContentTemp.Libs[(instance as Book).LibIndex].
+							Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
 					}
 					else if (instance is Shelf)
 					{
-
-						return ContentTemp.Libs[(instance as Shelf).ParentIndex].Shelves[(instance as Shelf).Index];
+						return ContentTemp.Libs[(instance as Shelf).ParentIndex].
+							Shelves[(instance as Shelf).Index];
 					}
 					else if (instance is Library)
 					{
-
 						return ContentTemp.Libs[(instance as Library).Index];
 					}
 					else
@@ -222,20 +182,18 @@ namespace Wpfproject1
 				ContentTemp = (Content)serializer.Deserialize(reader);
 				reader.Close();
 				reader.Dispose();
-				
 				if (instance is Book)
 				{
-
-					return ContentTemp.Libs[(instance as Book).LibIndex].Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
+					return ContentTemp.Libs[(instance as Book).LibIndex]
+						.Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
 				}
 				else if (instance is Shelf)
 				{
-
-					return ContentTemp.Libs[(instance as Shelf).ParentIndex].Shelves[(instance as Shelf).Index];
+					return ContentTemp.Libs[(instance as Shelf).ParentIndex]
+						.Shelves[(instance as Shelf).Index];
 				}
 				else if (instance is Library)
 				{
-
 					return ContentTemp.Libs[(instance as Library).Index];
 				}
 				else

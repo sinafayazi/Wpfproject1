@@ -88,48 +88,6 @@ namespace Wpfproject1.ViewModel
 
 			}
 		}
-
-		//private Library lib;
-		//public Library Lib
-		//{
-		//    get
-		//    {
-		//        return lib;
-		//    }
-		//    set
-		//    {
-		//        lib = value;
-		//        OnPropertyChanged();
-		//    }
-		//}
-		//private Shelf shelf;
-		//public Shelf Shelf
-		//{
-		//    get
-		//    {
-		//        return shelf;
-		//    }
-		//    set
-		//    {
-		//        shelf = value;
-		//        OnPropertyChanged();
-		//    }
-
-		//}
-		//private Book book;
-		//public Book Book
-		//{
-		//    get
-		//    {
-		//        return book;
-		//    }
-		//    set
-		//    {
-		//        book = value;
-		//        OnPropertyChanged();
-		//    }
-		//}
-
 		public ContentViewModel()
 		{
 			Content = new Content();
@@ -141,12 +99,6 @@ namespace Wpfproject1.ViewModel
 		public void LoadMetod()
 		{
 			Content = (Content)StorageManager.Load(Content);
-			//Model.PropertyChanged += Lib_PropertyChanged;
-			
-			//LibraryViewModel.Lib = Content.Libs.Last();
-			//ShelfViewModel.Shelf = Content.Libs.Last().Shelves.Last();
-			//BookViewModel.Book = Content.Libs.Last().Shelves.Last().Books.Last();
-
 		}
 
 		private void Lib_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -154,7 +106,6 @@ namespace Wpfproject1.ViewModel
 			(LibraryViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
 			(ShelfViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
 			(BookViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-			
 		}
 
 		public void UpdateVisibility()
@@ -174,7 +125,7 @@ namespace Wpfproject1.ViewModel
 
 				ShelfViewModel.IsVisible = Visibility.Visible;
 				ShelfViewModel.Shelf = (Shelf)model;
-				
+
 			}
 			else if (model is Book)
 			{
@@ -182,11 +133,6 @@ namespace Wpfproject1.ViewModel
 				BookViewModel.IsVisible = Visibility.Visible;
 				BookViewModel.Book = (Book)model;
 			}
-
-
 		}
-		
-
 	}
-
 }

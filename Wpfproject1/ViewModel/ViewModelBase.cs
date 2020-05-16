@@ -15,23 +15,23 @@ using Wpfproject1.Command;
 using Wpfproject1.Model;
 namespace Wpfproject1.ViewModel
 {
-    public class ViewModelBase : ModelBase
-    {
+	public class ViewModelBase : ModelBase
+	{
 
-        public ICommand SaveCommand
-        {
-            get;
-            set;
-        }
-        public ICommand LoadCommand
-        {
-            get;
-            set;
-        }
-        public ViewModelBase()
-        {
+		public ICommand SaveCommand
+		{
+			get;
+			set;
+		}
+		public ICommand LoadCommand
+		{
+			get;
+			set;
+		}
+		public ViewModelBase()
+		{
 
-        }
-        
-    }
+		}
+
+	}
 }
