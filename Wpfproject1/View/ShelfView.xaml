@@ -109,7 +109,7 @@
 				Grid.Row="6"
 				Width="200"
 				Height="200"
-				Grid.Column="1"
+				Grid.Column="0"
 				Grid.ColumnSpan="4"
 				Style="{DynamicResource MyShelfControlStyle}"
 				Margin="20,0,20,0" />
