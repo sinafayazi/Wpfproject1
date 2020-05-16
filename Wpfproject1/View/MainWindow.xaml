@@ -132,12 +132,14 @@
 					Text="{Binding ElementName=Control, Path=X}"
 					Grid.Row="2"
 					Grid.Column="1"
-					Style="{StaticResource TextBoxStyle}" />
+					Style="{StaticResource TextBoxStyle}"
+					IsReadOnly="True" />
 				<TextBox
 					Text="{Binding ElementName=Control, Path=Y}"
 					Grid.Row="3"
 					Grid.Column="1"
-					Style="{StaticResource TextBoxStyle}" />
+					Style="{StaticResource TextBoxStyle}" 
+					IsReadOnly="True"/>
 			</Grid>
 		</Border>
 	</Grid>
