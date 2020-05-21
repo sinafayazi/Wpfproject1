@@ -120,7 +120,7 @@ namespace Wpfproject1.Model
 				OnPropertyChanged();
 			}
 		}
-
+		
 		public string Error
 		{
 			get
@@ -128,7 +128,6 @@ namespace Wpfproject1.Model
 				return null;
 			}
 		}
-
 		public string this[string PropertyName]
 		{
 			get
@@ -136,7 +135,6 @@ namespace Wpfproject1.Model
 				string result = string.Empty;
 				switch (PropertyName)
 				{
-
 					case "BookName":
 						if (string.IsNullOrWhiteSpace(BookName))
 						{
@@ -178,7 +176,6 @@ namespace Wpfproject1.Model
 						}
 						break;
 					case "Email":
-
 						if (string.IsNullOrWhiteSpace(Email))
 						{
 							result = "Email is required";
@@ -199,7 +196,6 @@ namespace Wpfproject1.Model
 							result = "Publisher must contain just alphabets";
 						}
 						break;
-
 					default:
 						break;
 				}

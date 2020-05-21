@@ -12,6 +12,42 @@ using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
+	//{
+	//					new Library()
+	//{
+	//	Name = "First" , Index = 0 , 
+	//						Shelves = new ObservableCollection<Shelf>()
+	//					{
+	//					new Shelf(){Index = 0,ParentIndex = 0, Position = "FirstShelf", Books = new ObservableCollection<Book>()
+	//					{
+	//						new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
+	//						new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
+	//					} },
+	//					new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
+	//					{
+	//						new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
+	//						new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
+	//					} },
+	//					}
+	//						}
+	//					,
+	//					new Library()
+	//{
+	//	Index = 1, Name = "Second" ,Shelves = new ObservableCollection<Shelf>()
+	//					{
+	//					new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
+	//					{
+	//						new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
+	//						new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
+	//					}
+	//					},
+	//					new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
+	//					{
+	//						new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
+	//						new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
+	//					}},
+	//					} },
+	//				}
 	public class StorageManager : ViewModelBase
 	{
 		static bool IsFirst = true;
@@ -52,7 +88,50 @@ namespace Wpfproject1
 		}
 		public static object Load(ModelBase instance)
 		{
-			Content ContentTemp = new Content();
+			Content ContentTemp = new Content
+			{
+				Libs = new ObservableCollection<Library>()
+				{
+					new Library()
+	{
+		Name = "First" , Index = 0 ,
+							Shelves = new ObservableCollection<Shelf>()
+						{
+						new Shelf(){Index = 0,ParentIndex = 0, Position = "FirstShelf", Books = new ObservableCollection<Book>()
+						{
+							new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
+							new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
+						} },
+						new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
+						{
+							new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
+							new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
+						} },
+						}
+							}
+						,
+						new Library()
+	{
+		Index = 1, Name = "Second" ,Shelves = new ObservableCollection<Shelf>()
+						{
+						new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
+						{
+							new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
+							new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
+						}
+						},
+						new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
+						{
+							new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
+							new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
+						}},
+						} },
+					}
+				//			new Library() { Name = "dummy" , Index = 0 
+				//			}
+			
+			};
+
 			if (IsFirst == true)
 			{
 				OpenFileDialog openFileDialog = new OpenFileDialog
@@ -67,40 +146,6 @@ namespace Wpfproject1
 					ContentTemp = (Content)serializer.Deserialize(reader);
 					reader.Close();
 					reader.Dispose();
-				}
-				else
-				{
-					ContentTemp.Libs = new ObservableCollection<Library>()
-					{
-						new Library() { Name = "First" , Index = 0 , Shelves =new ObservableCollection<Shelf>()
-						{
-						new Shelf(){Index = 0,ParentIndex = 0, Position = "FirstShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
-							new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
-						} },
-						new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
-							new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
-						} },
-						}
-					},
-						new Library() {Index = 1, Name = "Second" ,Shelves =new ObservableCollection<Shelf>()
-						{
-						new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
-							new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
-						}
-						},
-						new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
-							new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
-						}},
-						} },
-				};
 				}
 				IsFirst = false;
 				if (instance is Book)
@@ -125,63 +170,13 @@ namespace Wpfproject1
 			else
 			{
 				XmlSerializer serializer = new XmlSerializer(typeof(Content));
-				if (FliePath == null)
+				if (FliePath != null)
 				{
-					ContentTemp.Libs = new ObservableCollection<Library>()
-					{
-						new Library() { Name = "First" , Index = 0 , Shelves =new ObservableCollection<Shelf>()
-						{
-						new Shelf(){Index = 0,ParentIndex = 0, Position = "FirstShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
-							new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
-						} },
-						new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
-							new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
-						} },
-						}
-					},
-						new Library() {Index = 1, Name = "Second" ,Shelves =new ObservableCollection<Shelf>()
-						{
-						new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
-							new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
-						}
-						},
-						new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
-						{
-							new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
-							new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
-						}},
-						} },
-				};
-
-					if (instance is Book)
-					{
-						return ContentTemp.Libs[(instance as Book).LibIndex].
-							Shelves[(instance as Book).ParentIndex].Books[(instance as Book).Index];
-					}
-					else if (instance is Shelf)
-					{
-						return ContentTemp.Libs[(instance as Shelf).ParentIndex].
-							Shelves[(instance as Shelf).Index];
-					}
-					else if (instance is Library)
-					{
-						return ContentTemp.Libs[(instance as Library).Index];
-					}
-					else
-					{
-						return ContentTemp;
-					}
+					FileStream reader = new FileStream(FliePath, FileMode.Open);
+					ContentTemp = (Content)serializer.Deserialize(reader);
+					reader.Close();
+					reader.Dispose();
 				}
-				FileStream reader = new FileStream(FliePath, FileMode.Open);
-				ContentTemp = (Content)serializer.Deserialize(reader);
-				reader.Close();
-				reader.Dispose();
 				if (instance is Book)
 				{
 					return ContentTemp.Libs[(instance as Book).LibIndex]

@@ -17,7 +17,6 @@ namespace Wpfproject1.Model
 			get;
 			set;
 		}
-
 		private string name;
 		public string Name
 		{
@@ -96,7 +95,6 @@ namespace Wpfproject1.Model
 				OnPropertyChanged();
 			}
 		}
-
 		public string Error
 		{
 			get
@@ -104,7 +102,6 @@ namespace Wpfproject1.Model
 				return null;
 			}
 		}
-
 		public string this[string PropertyName]
 		{
 			get
@@ -112,7 +109,6 @@ namespace Wpfproject1.Model
 				string result = string.Empty;
 				switch (PropertyName)
 				{
-
 					case "Name":
 						if (string.IsNullOrWhiteSpace(Name))
 						{
@@ -154,15 +150,11 @@ namespace Wpfproject1.Model
 							result = "Website is invalid";
 						}
 						break;
-
-
-
 					default:
 						break;
 				}
 				return result;
 			}
 		}
-
 	}
 }

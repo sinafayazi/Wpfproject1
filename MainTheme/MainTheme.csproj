@@ -49,8 +49,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Styles\ShelfControlStyle.xaml.cs">
-      <DependentUpon>ShelfControlStyle.xaml</DependentUpon>
+    <Compile Include="Helper\Converters.cs" />
+    <Compile Include="Styles\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Page Include="Brushes\solidandgradiant.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +94,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\TreeViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

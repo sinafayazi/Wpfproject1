@@ -16,21 +16,6 @@ namespace Wpfproject1.ViewModel
 {
 	public class ShelfViewModel : ViewModelBase
 	{
-		private Visibility isVisible;
-
-		public Visibility IsVisible
-		{
-			get
-			{
-				return isVisible;
-			}
-			set
-			{
-				isVisible = value;
-				OnPropertyChanged();
-			}
-		}
-
 		private Shelf shelf;
 		public Shelf Shelf
 		{
@@ -50,7 +35,6 @@ namespace Wpfproject1.ViewModel
 			Shelf = new Shelf();
 			LoadMetod();
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
-			LoadCommand = new RelayCommand(LoadAction, CanLoad);
 		}
 		private bool CanSave(object parameter)
 		{

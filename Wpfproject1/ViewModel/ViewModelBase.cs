@@ -18,12 +18,12 @@ namespace Wpfproject1.ViewModel
 	public class ViewModelBase : ModelBase
 	{
 
-		public ICommand SaveCommand
+		public static ICommand SaveCommand
 		{
 			get;
 			set;
 		}
-		public ICommand LoadCommand
+		public static ICommand LoadCommand
 		{
 			get;
 			set;

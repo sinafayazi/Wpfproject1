@@ -22,9 +22,7 @@ namespace Wpfproject1.Model
 				OnPropertyChanged();
 			}
 		}
-
 	}
-
 }
 
 

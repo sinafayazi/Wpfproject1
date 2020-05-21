@@ -94,13 +94,11 @@ namespace Wpfproject1.Model
 				return null;
 			}
 		}
-
 		public string this[string PropertyName]
 		{
 			get
 			{
 				string result = string.Empty;
-
 				switch (PropertyName)
 				{
 					case "Count":
@@ -124,25 +122,20 @@ namespace Wpfproject1.Model
 						{
 							result = "Position must contain just alphabets";
 						}
-
 						break;
 					case "Floor":
 						if (Floor < 0 || Floor > 100)
 						{
 							result = "Floor is out of expected range (0,100)";
-
 						}
 
 						break;
 					default:
-
 						break;
 				}
-
 				return result;
 			}
 		}
 	}
-
 }
 

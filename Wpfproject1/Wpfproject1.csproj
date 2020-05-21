@@ -58,7 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BindableSelectedItemBehavior.cs" />
+    <Compile Include="BindableItemTreeView.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Model\Content.cs" />
     <Compile Include="ViewModel\ContentViewModel.cs" />
@@ -67,9 +67,6 @@
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\ShelfViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\ContentControlView.xaml.cs">
-      <DependentUpon>ContentControlView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LibraryView.xaml.cs">
       <DependentUpon>LibraryView.xaml</DependentUpon>
     </Compile>
@@ -81,10 +78,6 @@
       <DependentUpon>ShelfView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\BookView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ContentControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

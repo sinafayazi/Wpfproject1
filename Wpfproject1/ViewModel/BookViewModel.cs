@@ -15,20 +15,6 @@ namespace Wpfproject1.ViewModel
 {
 	public class BookViewModel : ViewModelBase
 	{
-		private Visibility isVisible;
-
-		public Visibility IsVisible
-		{
-			get
-			{
-				return isVisible;
-			}
-			set
-			{
-				isVisible = value;
-				OnPropertyChanged();
-			}
-		}
 		private Book book;
 		public Book Book
 		{
@@ -47,7 +33,6 @@ namespace Wpfproject1.ViewModel
 			Book = new Book();
 			LoadMetod();
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
-			LoadCommand = new RelayCommand(LoadAction, CanLoad);
 		}
 		private bool CanSave(object parameter)
 		{

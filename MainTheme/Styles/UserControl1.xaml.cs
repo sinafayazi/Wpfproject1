@@ -1,7 +1,5 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Serialization;
-using Wpfproject1.Model;
-using Wpfproject1.ViewModel;
 
-namespace Wpfproject1
+namespace MainTheme.Styles
 {
-    public partial class BookView : UserControl
-    {
-        public BookView()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for UserControl1.xaml
+	/// </summary>
+	public partial class UserControl1 : UserControl
+	{
+		public UserControl1()
+		{
+			InitializeComponent();
+		}
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Wpfproject1.ViewModel
 
 	public class ContentViewModel : ViewModelBase
 	{
+		
+
 		private Content content;
 
 		public Content Content
@@ -39,8 +42,8 @@ namespace Wpfproject1.ViewModel
 			{
 				model = value;
 				OnPropertyChanged();
-				UpdateVisibility();
-				model.PropertyChanged += Lib_PropertyChanged;
+				UpdateCommands();
+				model.PropertyChanged += Model_PropertyChanged;
 			}
 		}
 		private LibraryViewModel libraryViewModel;
@@ -91,47 +94,91 @@ namespace Wpfproject1.ViewModel
 		public ContentViewModel()
 		{
 			Content = new Content();
-			LibraryViewModel = new LibraryViewModel();
-			ShelfViewModel = new ShelfViewModel();
-			BookViewModel = new BookViewModel();
+		
+			
+		
+			LoadMetod();
+			LoadCommand = new RelayCommand(LoadAction, CanLoad);
+
+		}
+		private bool CanLoad(object parameter)
+		{
+			return true;
+		}
+		private void LoadAction(object parameter)
+		{
 			LoadMetod();
 		}
+
+
 		public void LoadMetod()
 		{
-			Content = (Content)StorageManager.Load(Content);
+			if (Model is Library)
+			{
+				Model = (Library)StorageManager.Load(Model);
+			}
+			else if (Model is Shelf)
+			{
+				Model = (Shelf)StorageManager.Load(Model);
+			}
+			else if (Model is Book)
+			{
+				Model = (Book)StorageManager.Load(Model);
+			}
+			else
+			{
+				Content = (Content)StorageManager.Load(Content);
+			}
+			
 		}
 
-		private void Lib_PropertyChanged(object sender, PropertyChangedEventArgs e)
+		private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
-			(LibraryViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-			(ShelfViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-			(BookViewModel.SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+			if (Model is Library)
+			{
+				LibraryViewModel.Lib = (Library)Model;
+			}
+			else if (Model is Shelf)
+			{
+				ShelfViewModel.Shelf = (Shelf)Model;
+
+			}
+			else if (Model is Book)
+			{
+				BookViewModel.Book = (Book)Model;
+			}
+			(SaveCommand as RelayCommand).RaiseCanExecuteChanged();
+
 		}
 
-		public void UpdateVisibility()
+		public void UpdateCommands()
 		{
-			LibraryViewModel.IsVisible = Visibility.Collapsed;
-			ShelfViewModel.IsVisible = Visibility.Collapsed;
-			BookViewModel.IsVisible = Visibility.Collapsed;
 
-			if (model is Library)
+			if (Model is Library)
 			{
-
-				LibraryViewModel.IsVisible = Visibility.Visible;
-				LibraryViewModel.Lib = (Library)model;
+				LibraryViewModel = new LibraryViewModel
+				{
+					Lib = (Library)Model
+				};
+				SaveCommand = LibraryViewModel.SaveCommand;
+				
 			}
-			else if (model is Shelf)
+			else if (Model is Shelf)
 			{
-
-				ShelfViewModel.IsVisible = Visibility.Visible;
-				ShelfViewModel.Shelf = (Shelf)model;
+				ShelfViewModel = new ShelfViewModel
+				{
+					Shelf = (Shelf)Model
+				};
+				SaveCommand = ShelfViewModel.SaveCommand;
 
 			}
-			else if (model is Book)
+			else if (Model is Book)
 			{
-
-				BookViewModel.IsVisible = Visibility.Visible;
-				BookViewModel.Book = (Book)model;
+				BookViewModel = new BookViewModel
+				{
+					Book = (Book)Model
+				};
+				SaveCommand = BookViewModel.SaveCommand;
 			}
 		}
 	}

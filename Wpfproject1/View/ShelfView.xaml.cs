@@ -16,9 +16,6 @@ using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
-    /// <summary>
-    /// Interaction logic for shelf.xaml
-    /// </summary>
     public partial class ShelfView : UserControl
     {
         public ShelfView()

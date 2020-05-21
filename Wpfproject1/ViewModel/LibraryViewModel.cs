@@ -16,20 +16,6 @@ namespace Wpfproject1.ViewModel
 {
 	public class LibraryViewModel : ViewModelBase
 	{
-		private Visibility isVisible;
-
-		public Visibility IsVisible
-		{
-			get
-			{
-				return isVisible;
-			}
-			set
-			{
-				isVisible = value;
-				OnPropertyChanged();
-			}
-		}
 		private Library lib;
 		public Library Lib
 		{
@@ -48,7 +34,6 @@ namespace Wpfproject1.ViewModel
 			Lib = new Library();
 			LoadMetod();
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
-			LoadCommand = new RelayCommand(LoadAction, CanLoad);
 		}
 		private bool CanSave(object parameter)
 		{
