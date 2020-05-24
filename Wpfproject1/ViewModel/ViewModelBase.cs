@@ -17,7 +17,6 @@ namespace Wpfproject1.ViewModel
 {
 	public class ViewModelBase : ModelBase
 	{
-
 		public static ICommand SaveCommand
 		{
 			get;
@@ -28,10 +27,5 @@ namespace Wpfproject1.ViewModel
 			get;
 			set;
 		}
-		public ViewModelBase()
-		{
-
-		}
-
 	}
 }

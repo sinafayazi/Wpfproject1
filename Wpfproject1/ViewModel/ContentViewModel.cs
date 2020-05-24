@@ -94,9 +94,6 @@ namespace Wpfproject1.ViewModel
 		public ContentViewModel()
 		{
 			Content = new Content();
-		
-			
-		
 			LoadMetod();
 			LoadCommand = new RelayCommand(LoadAction, CanLoad);
 

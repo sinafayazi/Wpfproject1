@@ -10,7 +10,7 @@
 		mc:Ignorable="d"
 		x:Name="Main"
 		Title="WpfProject1_SinaFayazi"
-		Height="500"
+		Height="600"
 		Width="1000"
 		MinHeight="600"
 		MinWidth="600"
@@ -60,18 +60,13 @@
 						  Grid.Column="1">
 			<ContentPresenter.Resources>
 				<DataTemplate DataType="{x:Type m:Library}">
-					<local:LibraryView 
-									   
-									   Style="{StaticResource UserControlStyle}" />
+					<local:LibraryView Style="{StaticResource UserControlStyle}" />
 				</DataTemplate>
 				<DataTemplate DataType="{x:Type m:Shelf}">
-					<local:ShelfView 
-									
-									 Style="{StaticResource UserControlStyle}" />
+					<local:ShelfView Style="{StaticResource UserControlStyle}" />
 				</DataTemplate>
 				<DataTemplate DataType="{x:Type m:Book}">
-					<local:BookView 
-									Style="{StaticResource UserControlStyle}" />
+					<local:BookView Style="{StaticResource UserControlStyle}" />
 				</DataTemplate>
 			</ContentPresenter.Resources>
 		</ContentPresenter>

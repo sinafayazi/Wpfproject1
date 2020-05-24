@@ -32,7 +32,6 @@ namespace Wpfproject1.ViewModel
 		public LibraryViewModel()
 		{
 			Lib = new Library();
-			LoadMetod();
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
 		}
 		private bool CanSave(object parameter)
@@ -51,22 +50,6 @@ namespace Wpfproject1.ViewModel
 			StorageManager.Save(Lib);
 			OnPropertyChanged("Libs");
 		}
-		private bool CanLoad(object parameter)
-		{
-			return true;
-		}
-		private void LoadAction(object parameter)
-		{
-			LoadMetod();
-		}
-		public void LoadMetod()
-		{
-			Lib = (Library)StorageManager.Load(Lib);
-			Lib.PropertyChanged += Model_PropertyChanged;
-		}
-		private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			(SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-		}
+
 	}
 }

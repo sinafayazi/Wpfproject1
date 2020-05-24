@@ -12,42 +12,6 @@ using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
-	//{
-	//					new Library()
-	//{
-	//	Name = "First" , Index = 0 , 
-	//						Shelves = new ObservableCollection<Shelf>()
-	//					{
-	//					new Shelf(){Index = 0,ParentIndex = 0, Position = "FirstShelf", Books = new ObservableCollection<Book>()
-	//					{
-	//						new Book() {Index = 0,ParentIndex = 0,LibIndex=0, BookName = "Programming" },
-	//						new Book() {Index = 1,ParentIndex = 0,LibIndex=0, BookName = "StrengthOfMaterials" },
-	//					} },
-	//					new Shelf(){Index = 1,ParentIndex = 0, Position = "SecondShelf", Books = new ObservableCollection<Book>()
-	//					{
-	//						new Book() {Index = 0,ParentIndex = 1,LibIndex=0, BookName = "FluidMechanic" },
-	//						new Book() {Index = 1,ParentIndex = 1,LibIndex=0, BookName = "DifferentialEquations" },
-	//					} },
-	//					}
-	//						}
-	//					,
-	//					new Library()
-	//{
-	//	Index = 1, Name = "Second" ,Shelves = new ObservableCollection<Shelf>()
-	//					{
-	//					new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
-	//					{
-	//						new Book() {Index = 0,ParentIndex = 0,LibIndex=1, BookName = "Physics" },
-	//						new Book() {Index = 1,ParentIndex = 0,LibIndex=1, BookName = "Chem" },
-	//					}
-	//					},
-	//					new Shelf(){Index = 1,ParentIndex = 1, Position = "ForthShelf" , Books = new ObservableCollection<Book>()
-	//					{
-	//						new Book() {Index = 0,ParentIndex = 1,LibIndex=1, BookName = "Math" },
-	//						new Book() {Index = 1,ParentIndex = 1,LibIndex=1, BookName = "Statics" },
-	//					}},
-	//					} },
-	//				}
 	public class StorageManager : ViewModelBase
 	{
 		static bool IsFirst = true;
@@ -112,7 +76,7 @@ namespace Wpfproject1
 						,
 						new Library()
 	{
-		Index = 1, Name = "Second" ,Shelves = new ObservableCollection<Shelf>()
+						Index = 1, Name = "Second" ,Shelves = new ObservableCollection<Shelf>()
 						{
 						new Shelf(){Index = 0,ParentIndex = 1, Position = "ThirdShelf", Books = new ObservableCollection<Book>()
 						{
@@ -127,9 +91,6 @@ namespace Wpfproject1
 						}},
 						} },
 					}
-				//			new Library() { Name = "dummy" , Index = 0 
-				//			}
-			
 			};
 
 			if (IsFirst == true)

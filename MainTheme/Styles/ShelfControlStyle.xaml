@@ -29,7 +29,6 @@
 									<RowDefinition Height="1*" />
 								</Grid.RowDefinitions>
 								<Border  x:Name="Center"
-										
 										 Grid.Row="1"
 										 Grid.Column="1"
 										 CornerRadius="1000"

@@ -33,7 +33,6 @@ namespace Wpfproject1.ViewModel
 		public ShelfViewModel()
 		{
 			Shelf = new Shelf();
-			LoadMetod();
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
 		}
 		private bool CanSave(object parameter)
@@ -52,23 +51,5 @@ namespace Wpfproject1.ViewModel
 			StorageManager.Save(Shelf);
 			OnPropertyChanged("Libs");
 		}
-		private bool CanLoad(object parameter)
-		{
-			return true;
-		}
-		private void LoadAction(object parameter)
-		{
-			LoadMetod();
-		}
-		public void LoadMetod()
-		{
-			Shelf = (Shelf)StorageManager.Load(Shelf);
-			Shelf.PropertyChanged += Model_PropertyChanged;
-		}
-		private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			(SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-		}
-
 	}
 }
