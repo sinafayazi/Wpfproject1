@@ -22,7 +22,8 @@ namespace Wpfproject1
 			DependencyProperty.Register("TreeViewSelectedItem", typeof(object), typeof(BindableItemTreeView), new PropertyMetadata(new object(), TreeViewSelectedItemChanged));
 		public static void TreeViewSelectedItemChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
-				(sender as TreeView).SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(TreeViewItemChange);
+			(sender as TreeView).SelectedItemChanged -= new RoutedPropertyChangedEventHandler<object>(TreeViewItemChange);
+			(sender as TreeView).SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(TreeViewItemChange);
 
 		}
 		static void TreeViewItemChange(object sender, RoutedPropertyChangedEventArgs<object> e)
