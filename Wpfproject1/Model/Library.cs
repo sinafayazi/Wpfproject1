@@ -18,8 +18,8 @@ namespace Wpfproject1.Model
 			get;
 			set;
 		}
+		private bool _isExpanded = false;
 		[XmlIgnore]
-		private bool _isExpanded;
 		public bool IsExpanded
 		{
 			get

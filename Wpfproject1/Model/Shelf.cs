@@ -7,12 +7,15 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Wpfproject1.Model
 {
 	public class Shelf : ModelBase, IDataErrorInfo
 	{
-		private bool _isExpanded;
+		
+		private bool _isExpanded = false;
+		[XmlIgnore]
 		public bool IsExpanded
 		{
 			get

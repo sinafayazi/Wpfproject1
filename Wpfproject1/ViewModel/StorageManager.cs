@@ -14,10 +14,8 @@ namespace Wpfproject1
 {
 	public class StorageManager : ViewModelBase
 	{
-		static bool IsFirst = true; 
-		static bool IsOpened = false;
+		static bool IsFirst = true;
 		public static string FliePath;
-
 		static Content ContentTemp = new Content
 		{
 			Libs = new ObservableCollection<Library>()
@@ -63,8 +61,7 @@ namespace Wpfproject1
 			{
 				FliePath = saveFileDialog.FileName;
 				XmlSerializer serializer = new XmlSerializer(typeof(Content));
-
-				using (FileStream Writer = new FileStream(FliePath, FileMode.OpenOrCreate))
+				using (StreamWriter Writer = new StreamWriter(FliePath))
 				{
 					serializer.Serialize(Writer, ContentTemp);
 					Writer.Close();
@@ -114,7 +111,6 @@ namespace Wpfproject1
 		 					} },
 		 				}
 			};
-			XmlSerializer serializer = new XmlSerializer(typeof(Content));
 			if (IsFirst == true)
 			{
 				OpenFileDialog openFileDialog = new OpenFileDialog
@@ -123,26 +119,30 @@ namespace Wpfproject1
 				};
 				if (openFileDialog.ShowDialog() == true)
 				{
+					XmlSerializer serializer = new XmlSerializer(typeof(Content));
 					FliePath = openFileDialog.FileName;
-					FileStream reader = new FileStream(FliePath, FileMode.Open);
+					StreamReader reader = new StreamReader(FliePath);
 					content = (Content)serializer.Deserialize(reader);
 					reader.Close();
 					reader.Dispose();
-					IsOpened = true;
 				}
 				IsFirst = false;
 			}
 			else
 			{
-				if (FliePath!=null)
+				
+				if (FliePath != null)
 				{
-					using (FileStream reader = new FileStream(FliePath, FileMode.Open))
-					{
+					XmlSerializer serializer = new XmlSerializer(typeof(Content));
+					StreamReader reader = new StreamReader(FliePath);
+					content = (Content)serializer.Deserialize(reader);
+					reader.Close();
+					reader.Dispose();
 
-						content = (Content)serializer.Deserialize(reader);
-						reader.Close();
-						reader.Dispose();
-					}
+				}
+				else
+				{
+					
 				}
 			}
 			if (instance is Book)

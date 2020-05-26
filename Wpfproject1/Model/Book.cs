@@ -18,8 +18,9 @@ namespace Wpfproject1.Model
 	}
 	public class Book : ModelBase, IDataErrorInfo
 	{
+		
+		private bool _isExpanded = false;
 		[XmlIgnore]
-		private bool _isExpanded;
 		public bool IsExpanded
 		{
 			get
