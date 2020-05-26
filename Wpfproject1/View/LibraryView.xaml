@@ -105,7 +105,7 @@
 					Margin="5"
 					Cursor="Hand"
 					Style="{StaticResource ButtonStyle}"
-					Command="{x:Static vm:ContentViewModel.SaveCommand}" />
+					Command="{x:Static vm:LibraryViewModel.SaveCommand}" />
 			<Button Content="Cancel"
 					Grid.Column="2"
 					Grid.Row="9"

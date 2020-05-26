@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
 using Wpfproject1.Command;
 using Wpfproject1.Model;
 
 namespace Wpfproject1.ViewModel
 {
-
 	public class ContentViewModel : ViewModelBase
 	{
-		
-
 		private Content content;
-
 		public Content Content
 		{
 			get
@@ -31,7 +20,6 @@ namespace Wpfproject1.ViewModel
 			}
 		}
 		private static ModelBase model;
-
 		public ModelBase Model
 		{
 			get
@@ -47,7 +35,6 @@ namespace Wpfproject1.ViewModel
 			}
 		}
 		private LibraryViewModel libraryViewModel;
-
 		public LibraryViewModel LibraryViewModel
 		{
 			get
@@ -58,11 +45,9 @@ namespace Wpfproject1.ViewModel
 			{
 				libraryViewModel = value;
 				OnPropertyChanged();
-
 			}
 		}
 		private ShelfViewModel shelfViewModel;
-
 		public ShelfViewModel ShelfViewModel
 		{
 			get
@@ -73,11 +58,9 @@ namespace Wpfproject1.ViewModel
 			{
 				shelfViewModel = value;
 				OnPropertyChanged();
-
 			}
 		}
 		private BookViewModel bookViewModel;
-
 		public BookViewModel BookViewModel
 		{
 			get
@@ -88,7 +71,6 @@ namespace Wpfproject1.ViewModel
 			{
 				bookViewModel = value;
 				OnPropertyChanged();
-
 			}
 		}
 		public ContentViewModel()
@@ -96,7 +78,6 @@ namespace Wpfproject1.ViewModel
 			Content = new Content();
 			LoadMetod();
 			LoadCommand = new RelayCommand(LoadAction, CanLoad);
-
 		}
 		private bool CanLoad(object parameter)
 		{
@@ -106,8 +87,6 @@ namespace Wpfproject1.ViewModel
 		{
 			LoadMetod();
 		}
-
-
 		public void LoadMetod()
 		{
 			if (Model is Library)
@@ -126,9 +105,7 @@ namespace Wpfproject1.ViewModel
 			{
 				Content = (Content)StorageManager.Load(Content);
 			}
-			
 		}
-
 		private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			if (Model is Library)
@@ -138,19 +115,15 @@ namespace Wpfproject1.ViewModel
 			else if (Model is Shelf)
 			{
 				ShelfViewModel.Shelf = (Shelf)Model;
-
 			}
 			else if (Model is Book)
 			{
 				BookViewModel.Book = (Book)Model;
 			}
 			(SaveCommand as RelayCommand).RaiseCanExecuteChanged();
-
 		}
-
 		public void UpdateCommands()
 		{
-
 			if (Model is Library)
 			{
 				LibraryViewModel = new LibraryViewModel
@@ -158,7 +131,6 @@ namespace Wpfproject1.ViewModel
 					Lib = (Library)Model
 				};
 				SaveCommand = LibraryViewModel.SaveCommand;
-				
 			}
 			else if (Model is Shelf)
 			{
@@ -167,7 +139,6 @@ namespace Wpfproject1.ViewModel
 					Shelf = (Shelf)Model
 				};
 				SaveCommand = ShelfViewModel.SaveCommand;
-
 			}
 			else if (Model is Book)
 			{

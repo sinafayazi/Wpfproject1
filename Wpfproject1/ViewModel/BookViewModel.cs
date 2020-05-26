@@ -31,7 +31,6 @@ namespace Wpfproject1.ViewModel
 		public BookViewModel()
 		{
 			Book = new Book();
-
 			SaveCommand = new RelayCommand(SaveAction, CanSave);
 		}
 		private bool CanSave(object parameter)

@@ -28,7 +28,6 @@ namespace Wpfproject1.ViewModel
 				shelf = value;
 				OnPropertyChanged();
 			}
-
 		}
 		public ShelfViewModel()
 		{

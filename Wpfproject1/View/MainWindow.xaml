@@ -50,10 +50,18 @@
 									 Grid.Column="0"
 									 Style="{StaticResource TreeViewStyle}"
 									 ItemsSource="{Binding Content.Libs , Mode=TwoWay,
-				UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									 TreeViewSelectedItem="{Binding
-				Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-									 ItemContainerStyle="{StaticResource TreeViewItemStyle}"></pr:BindableItemTreeView>
+										Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+				<TreeView.ItemContainerStyle>
+					<Style TargetType="{x:Type TreeViewItem}"
+						   BasedOn="{StaticResource TreeViewItemStyle}">
+						<Setter Property="IsExpanded"
+								Value="{Binding Path=IsExpanded, 
+							Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+					</Style>
+				</TreeView.ItemContainerStyle>
+			</pr:BindableItemTreeView>
 		</Border>
 		<ContentPresenter Content="{Binding
 				Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"

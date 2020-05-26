@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Wpfproject1.Model
 {
@@ -17,6 +18,20 @@ namespace Wpfproject1.Model
 	}
 	public class Book : ModelBase, IDataErrorInfo
 	{
+		[XmlIgnore]
+		private bool _isExpanded;
+		public bool IsExpanded
+		{
+			get
+			{
+				return _isExpanded;
+			}
+			set
+			{
+				_isExpanded = value;
+			}
+		}
+
 		public int Index
 		{
 			get;
@@ -120,7 +135,6 @@ namespace Wpfproject1.Model
 				OnPropertyChanged();
 			}
 		}
-		
 		public string Error
 		{
 			get

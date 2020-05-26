@@ -139,7 +139,7 @@
 					Margin="5"
 					Cursor="Hand"
 					Style="{StaticResource ButtonStyle}"
-					Command="{x:Static vm:ContentViewModel.SaveCommand}" />
+					Command="{x:Static vm:BookViewModel.SaveCommand}" />
 			<Button Name="cancel"
 					Content="Cancel"
 					Grid.Column="2"

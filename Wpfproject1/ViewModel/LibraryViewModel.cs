@@ -50,6 +50,5 @@ namespace Wpfproject1.ViewModel
 			StorageManager.Save(Lib);
 			OnPropertyChanged("Libs");
 		}
-
 	}
 }

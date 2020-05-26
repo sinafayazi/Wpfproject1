@@ -12,6 +12,27 @@ namespace Wpfproject1.Model
 {
 	public class Shelf : ModelBase, IDataErrorInfo
 	{
+		private bool _isExpanded;
+		public bool IsExpanded
+		{
+			get
+			{
+				return _isExpanded;
+			}
+			set
+			{
+				_isExpanded = value;
+				if (_isExpanded)
+				{
+					OnExpandChanged();
+				}
+			}
+		}
+		private void OnExpandChanged()
+		{
+			Books.Clear();
+			Books = ((Shelf)StorageManager.Load(this)).Books;
+		}
 		public int Index
 		{
 			get;
@@ -128,7 +149,6 @@ namespace Wpfproject1.Model
 						{
 							result = "Floor is out of expected range (0,100)";
 						}
-
 						break;
 					default:
 						break;

@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Wpfproject1.Model
 {
@@ -16,6 +17,28 @@ namespace Wpfproject1.Model
 		{
 			get;
 			set;
+		}
+		[XmlIgnore]
+		private bool _isExpanded;
+		public bool IsExpanded
+		{
+			get
+			{
+				return _isExpanded;
+			}
+			set
+			{
+				_isExpanded = value;
+				if (_isExpanded)
+				{
+					OnExpandChanged();
+				}
+			}
+		}
+		private void OnExpandChanged()
+		{
+			Shelves.Clear();
+			Shelves = ((Library)StorageManager.Load(this)).Shelves;
 		}
 		private string name;
 		public string Name

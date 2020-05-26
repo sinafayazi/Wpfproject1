@@ -92,7 +92,7 @@
 				<Control:ShelfControl x:Name="Control"
 									  Width="50"
 									  Height="50"
-									  Style="{DynamicResource MyShelfControlStyle}"/>
+									  Style="{DynamicResource MyShelfControlStyle}" />
 			</Viewbox>
 			<Label HorizontalAlignment="Left"
 				   x:Name="X"
@@ -123,7 +123,7 @@
 					Margin="5"
 					Cursor="Hand"
 					Style="{StaticResource ButtonStyle}"
-					Command="{x:Static vm:ContentViewModel.SaveCommand}" />
+					Command="{x:Static vm:ShelfViewModel.SaveCommand}" />
 			<Button Content="Cancel"
 					Grid.Column="2"
 					Grid.Row="7"
