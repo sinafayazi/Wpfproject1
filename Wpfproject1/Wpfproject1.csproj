@@ -39,6 +39,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,7 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BindableItemTreeView.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Model\Content.cs" />
+    <Compile Include="ViewModel\ContentViewModel.cs" />
     <Compile Include="ViewModel\StorageManager.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />
@@ -129,10 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MainTheme\MainTheme.csproj">
-      <Project>{06811e07-011f-4b0b-a52f-2ff77c5ee0c5}</Project>
+      <Project>{58a081d2-745a-45fc-9771-57a83d790e82}</Project>
       <Name>MainTheme</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

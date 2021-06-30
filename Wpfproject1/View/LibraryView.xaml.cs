@@ -16,9 +16,6 @@ using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
-    /// <summary>
-    /// Interaction logic for library.xaml
-    /// </summary>
     public partial class LibraryView : UserControl
     {
         public LibraryView()

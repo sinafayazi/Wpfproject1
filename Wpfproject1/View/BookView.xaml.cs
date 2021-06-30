@@ -20,9 +20,6 @@ using Wpfproject1.ViewModel;
 
 namespace Wpfproject1
 {
-    /// <summary>
-    /// Interaction logic for book.xaml
-    /// </summary>
     public partial class BookView : UserControl
     {
         public BookView()
